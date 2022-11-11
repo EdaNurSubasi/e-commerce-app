@@ -1,4 +1,7 @@
 {
 	"title": "E-Ticaret Uygulama",
-	"generic": {}
+	"generic": {
+		"description": "Açıklama",
+		"price": "Fiyat"
+	}
 }
