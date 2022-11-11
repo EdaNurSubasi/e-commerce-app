@@ -1,23 +1,8 @@
-import {Card, CardContent, CardMedia, Typography} from '@mui/material'
+import {Button, Card, CardActions, CardContent, CardMedia, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 import React from 'react'
 import {translate} from '../localization'
-
-/**
- * {
-		id: 1,
-		title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-		price: 109.95,
-		description:
-			'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
-		category: "men's clothing",
-		image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-		rating: {
-			rate: 3.9,
-			count: 120,
-		},
-	}
-*/
+import {Navigate, useNavigate} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -25,26 +10,36 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center',
 		justifyContent: 'center',
 		flexDirection: 'column',
+		height: 600,
 	},
 }))
 
-//TODO: Other Fields, Clicking
+//TODO: Clicking - Routing
 const Product = ({product}) => {
 	const style = useStyles()
+	const navigate = useNavigate()
+
+	const showDetails = () => {
+		navigate(`/product/${product.id}`)
+	}
+
 	return (
 		<Card className={style.container}>
-			<CardMedia component="img" image={product.image} sx={{width: '50%'}} />
+			<CardMedia component="img" image={product.image} sx={{width: '25%'}} />
 			<CardContent>
-				<Typography gutterBottom textAlign="center" variant="h3" component="div">
+				<Typography gutterBottom textAlign="center" variant="h4" component="div">
 					{product.title}
 				</Typography>
-				<Typography gutterBottom paragraph color="textSecondary" component="div">
-					{translate.string('generic.description')}: {product.description}
+				<Typography gutterBottom textAlign="center" variant="h6" component="div">
+					{product.category}
 				</Typography>
-				<Typography gutterBottom variant="h5" component="div">
+				<Typography className="bottom" display="flex" justifyContent="space-between" textAlign="center" variant="h5" component="div">
 					{translate.string('generic.price')}: ${product.price}
 				</Typography>
 			</CardContent>
+			<CardActions>
+				<Button onClick={showDetails}>{translate.string('generic.details')}</Button>
+			</CardActions>
 		</Card>
 	)
 }

@@ -26,7 +26,6 @@ const headers_ = {'Content-Type': 'application/json', 'Access-Control-Allow-Orig
 const request = (method, endpoint, data, headers) => {
 	let ch = {}
 
-	console.log(headers)
 	return CLIENT.request({
 		method: method,
 		url: `${CONFIG.host}${endpoint}`,

@@ -1,4 +1,4 @@
-import {Entity} from './base'
+import {Entity, Model} from './base'
 
 /**
  * {
@@ -15,7 +15,7 @@ import {Entity} from './base'
 		},
 	}
 */
-class Rating extends Entity {
+class Rating extends Model {
 	constructor() {
 		super()
 

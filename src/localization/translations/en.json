@@ -2,6 +2,13 @@
 	"title": "E-Commerce Application",
 	"generic": {
 		"description": "Description",
-		"price": "Price"
+		"price": "Price",
+		"details": "Show Details",
+		"rate": "Rating",
+		"count": "Rating Count",
+		"sort": "Sort",
+		"limit": "Limit",
+		"asc": "Ascending",
+		"desc": "Descending"
 	}
 }

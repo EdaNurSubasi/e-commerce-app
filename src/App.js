@@ -1,12 +1,19 @@
 import React from 'react'
+import {BrowserRouter} from 'react-router-dom'
 import './App.css'
-import {HomePage} from './pages'
+import {ConfigProvider} from './config'
+import {LocalizationProvider} from './localization'
+import RouteStack from './routes/index'
 
 function App() {
 	return (
-		<div>
-			<HomePage />
-		</div>
+		<ConfigProvider>
+			<LocalizationProvider>
+				<BrowserRouter>
+					<RouteStack />
+				</BrowserRouter>
+			</LocalizationProvider>
+		</ConfigProvider>
 	)
 }
 

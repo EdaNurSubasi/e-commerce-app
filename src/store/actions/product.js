@@ -5,6 +5,7 @@ import {createAction} from '@reduxjs/toolkit'
 
 export const creators = {
 	products: createRequestActionCreators('products'),
+	product: createRequestActionCreators('products/:id'),
 	login: createRequestActionCreators('user/login', user => {
 		return {
 			payload: user,
@@ -25,13 +26,27 @@ export const creators = {
 }
 
 export const actions = {
-	products: () => dispatch => {
-		dispatch(creators.products.begin())
+	products:
+		(limit = 10, sort = 'asc') =>
+		dispatch => {
+			dispatch(creators.products.begin())
+
+			dispatch({
+				[REQUEST]: {
+					types: [creators.products.success(), creators.products.fail()],
+					endpoint: limit ? `products?sort=${sort}&limit=${limit}` : `products?sort=${sort}`,
+					method: METHOD.get,
+					authorized: false,
+				},
+			})
+		},
+	product: id => dispatch => {
+		dispatch(creators.product.begin())
 
 		dispatch({
 			[REQUEST]: {
-				types: [creators.products.success(), creators.products.fail()],
-				endpoint: `products`,
+				types: [creators.product.success(), creators.product.fail()],
+				endpoint: `products/${id}`,
 				method: METHOD.get,
 				authorized: false,
 			},

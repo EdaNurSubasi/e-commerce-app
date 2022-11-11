@@ -1,3 +1,4 @@
 import Product from './product'
+import Filter from './filter'
 
-export {Product}
+export {Product, Filter}

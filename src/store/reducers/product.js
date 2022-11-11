@@ -10,6 +10,11 @@ export const product = createReducer(
 			waiting: false,
 			error: null,
 		},
+		product: {
+			data: null,
+			waiting: false,
+			error: null,
+		},
 	},
 	builder => {
 		builder
@@ -38,8 +43,25 @@ export const product = createReducer(
 				}
 			})
 
-			.addDefaultCase((state, action) => {
-				console.log('Default case', action.type)
+			//Product
+			.addCase(creators.product.begin, (state, action) => {
+				state.product.waiting = true
+			})
+			.addCase(creators.product.success, (state, action) => {
+				const p = new Product()
+				p.decode(action.payload)
+				state.product = {
+					data: p,
+					waiting: false,
+					error: null,
+				}
+			})
+			.addCase(creators.product.fail, (state, action) => {
+				state.product = {
+					data: state.product.data,
+					waiting: false,
+					error: action.error,
+				}
 			})
 	}
 )
