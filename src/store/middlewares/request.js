@@ -4,13 +4,12 @@ import {GenericError} from '../../models'
 //TODO: Development Mode Configurations
 // Basic app configurations
 const CONFIG = {
-	host: process.env.API_URL,
+	host: process.env.REACT_APP_API_URL,
 }
 
 // Basic client configurations
 const CLIENT = axios.create({
 	baseURL: CONFIG.host,
-	responseType: 'json',
 })
 
 export const REQUEST = 'Request'
@@ -21,15 +20,21 @@ export const METHOD = {
 	delete: 'delete',
 }
 
-const request = (method, endpoint, data) => {
+const headers_ = {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': METHOD}
+
+// TODO: Autorization Adding?
+const request = (method, endpoint, data, headers) => {
 	let ch = {}
 
 	return CLIENT.request({
 		method: method,
-		url: `${CONFIG.path}${endpoint}`,
-		withCredentials: true,
+		url: `${CONFIG.host}${endpoint}`,
+		withCredentials: false,
 		responseType: 'json',
 		data: data,
+		headers: {
+			...headers,
+		},
 		timeout: 30000,
 	})
 		.then(response => {
@@ -57,6 +62,7 @@ export default store => next => async action => {
 	let {endpoint} = requestAction
 	let {method} = requestAction
 	let {data} = requestAction
+	let {headers} = requestAction
 
 	console.log(`Requesting ${method} ${CONFIG.host}/${endpoint} with data ${JSON.stringify(data)}`)
 
@@ -93,7 +99,7 @@ export default store => next => async action => {
 
 	const [successType, failureType] = types //Request Type, Success Type, Failure Type
 
-	return request(method, endpoint, data).then(
+	return request(method, endpoint, data, headers).then(
 		response =>
 			next(
 				actionWith({

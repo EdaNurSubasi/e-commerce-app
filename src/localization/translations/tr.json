@@ -1,4 +1,14 @@
 {
 	"title": "E-Ticaret Uygulama",
-	"generic": {}
+	"generic": {
+		"description": "Açıklama",
+		"price": "Fiyat",
+		"details": "Ayrıntıları Göster",
+		"rate": "Puan",
+		"count": "Puanlanma Sayısı",
+		"sort": "Sırala",
+		"limit": "Adet",
+		"asc": "Artan",
+		"desc": "Azalan"
+	}
 }
