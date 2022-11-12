@@ -1,18 +1,15 @@
-import {createRequestActionCreators} from './utils'
-
-import {REQUEST, METHOD} from '../middlewares/request'
 import {createAction} from '@reduxjs/toolkit'
 
 export const creators = {
-	store: createAction('cart/store/product', id => {
+	store: createAction('cart/store/product', (product, count) => {
 		return {
-			payload: id,
+			payload: {pr: product, c: count},
 		}
 	}),
 }
 
 export const actions = {
-	store: id => dispatch => {
-		dispatch(creators.store(id))
+	store: (product, count) => dispatch => {
+		dispatch(creators.store(product, count))
 	},
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 
-import {HomePage, MainPage, ProductPage} from '../pages'
+import {CartPage, HomePage, MainPage, ProductPage} from '../pages'
 
 export default RouteStack => {
 	return (
@@ -10,6 +10,7 @@ export default RouteStack => {
 				<Route path="/" element={<MainPage />}>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/product/:id" element={<ProductPage />} />
+					<Route path="/cart" element={<CartPage />} />
 				</Route>
 			</Routes>
 		</div>

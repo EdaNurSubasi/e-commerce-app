@@ -2,9 +2,9 @@ import {Button, Card, CardActions, CardContent, CardMedia, Typography} from '@mu
 import {makeStyles} from '@mui/styles'
 import React from 'react'
 import {translate} from '../localization'
-import {Navigate, useNavigate} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
-import {CartActions, ProductActions} from '../store/actions'
+import {useNavigate} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {CartActions} from '../store/actions'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
 
 const Product = ({product}) => {
 	const dispatch = useDispatch()
-	const cart = useSelector(state => state.cart.store)
 
 	const style = useStyles()
 	const navigate = useNavigate()
@@ -28,7 +27,7 @@ const Product = ({product}) => {
 	}
 
 	const handleAddCartClick = () => {
-		dispatch(CartActions.store(product.id))
+		dispatch(CartActions.store(product, 1))
 	}
 
 	return (
