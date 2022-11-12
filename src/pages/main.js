@@ -6,6 +6,7 @@ import React, {useState} from 'react'
 import {Outlet} from 'react-router-dom'
 import {translate} from '../localization'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import {useSelector} from 'react-redux'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -19,6 +20,9 @@ const useStyles = makeStyles(theme => ({
 
 const Main = () => {
 	const style = useStyles()
+
+	const cartStore = useSelector(state => state.cart.store)
+
 	return (
 		<Stack>
 			<AppBar position="sticky" sx={{top: 0, bottom: 'auto'}}>
@@ -27,7 +31,7 @@ const Main = () => {
 						{translate.string('title').toUpperCase()}
 					</Typography>
 					<IconButton size="large" edge="start" color="inherit" sx={{mr: 2}}>
-						<Badge badgeContent={4} color="secondary">
+						<Badge badgeContent={Object.keys(cartStore.data).length} color="secondary">
 							<ShoppingCartIcon />
 						</Badge>
 					</IconButton>
