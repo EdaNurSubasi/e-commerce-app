@@ -14,13 +14,16 @@ const useStyles = makeStyles(theme => ({
 	},
 }))
 
-//TODO: Clicking - Routing
 const Product = ({product}) => {
 	const style = useStyles()
 	const navigate = useNavigate()
 
-	const showDetails = () => {
+	const handleDetailClick = () => {
 		navigate(`/product/${product.id}`)
+	}
+
+	const handleAddCartClick = () => {
+		console.log(product)
 	}
 
 	return (
@@ -34,11 +37,12 @@ const Product = ({product}) => {
 					{product.category}
 				</Typography>
 				<Typography className="bottom" display="flex" justifyContent="space-between" textAlign="center" variant="h5" component="div">
-					{translate.string('generic.price')}: ${product.price}
+					{translate.string('product.price')}: ${product.price}
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button onClick={showDetails}>{translate.string('generic.details')}</Button>
+				<Button onClick={handleDetailClick}>{translate.string('product.details')}</Button>
+				<Button onClick={handleAddCartClick}>{translate.string('shopCart.addCart')}</Button>
 			</CardActions>
 		</Card>
 	)

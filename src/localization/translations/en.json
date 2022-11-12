@@ -1,14 +1,20 @@
 {
 	"title": "E-Commerce Application",
 	"generic": {
+		"sort": "Sort",
+		"limit": "Limit",
+		"asc": "Ascending",
+		"desc": "Descending",
+		"cat": "Categories"
+	},
+	"product": {
 		"description": "Description",
 		"price": "Price",
 		"details": "Show Details",
 		"rate": "Rating",
-		"count": "Rating Count",
-		"sort": "Sort",
-		"limit": "Limit",
-		"asc": "Ascending",
-		"desc": "Descending"
+		"count": "Rating Count"
+	},
+	"shopCart": {
+		"addCart": "Add to Shopping List"
 	}
 }

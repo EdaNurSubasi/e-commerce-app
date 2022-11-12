@@ -15,6 +15,11 @@ export const product = createReducer(
 			waiting: false,
 			error: null,
 		},
+		categories: {
+			data: [],
+			waiting: false,
+			error: null,
+		},
 	},
 	builder => {
 		builder
@@ -59,6 +64,25 @@ export const product = createReducer(
 			.addCase(creators.product.fail, (state, action) => {
 				state.product = {
 					data: state.product.data,
+					waiting: false,
+					error: action.error,
+				}
+			})
+
+			//Categories
+			.addCase(creators.categories.begin, (state, action) => {
+				state.categories.waiting = true
+			})
+			.addCase(creators.categories.success, (state, action) => {
+				state.categories = {
+					data: action.payload,
+					waiting: false,
+					error: null,
+				}
+			})
+			.addCase(creators.categories.fail, (state, action) => {
+				state.categories = {
+					data: state.categories.date,
 					waiting: false,
 					error: action.error,
 				}
