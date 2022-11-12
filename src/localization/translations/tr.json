@@ -15,6 +15,12 @@
 		"count": "Puanlanma Sayısı"
 	},
 	"shopCart": {
-		"addCart": "Alışveriş Listesine Ekle"
+		"addCart": "Alışveriş Listesine Ekle",
+		"pageTitle": "Sepetteki Ürünler",
+		"total": "Toplam Tutar",
+		"proceed": "Ödemeye İlerle."
+	},
+	"error": {
+		"dataNotFound": "Gösterilecek Herhangi Bir Şey Bulunamamıştır."
 	}
 }

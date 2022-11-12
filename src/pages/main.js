@@ -100,7 +100,7 @@ const Main = () => {
 			</AppBar>
 			<Menu className={style.card} anchorEl={anchorEl} open={open} onClose={handleClose}>
 				{Object.keys(cartStore.data).map(p => (
-					<MenuItem>
+					<MenuItem key={p}>
 						<CartItem
 							item={cartStore.data[p]}
 							onAddCart={() => handleAddCart(cartStore.data[p].product)}
