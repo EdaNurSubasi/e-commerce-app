@@ -20,8 +20,6 @@ export const METHOD = {
 	delete: 'delete',
 }
 
-const headers_ = {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': METHOD}
-
 // TODO: Autorization Adding?
 const request = (method, endpoint, data, headers) => {
 	let ch = {}

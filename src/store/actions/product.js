@@ -6,6 +6,8 @@ import {createAction} from '@reduxjs/toolkit'
 export const creators = {
 	products: createRequestActionCreators('products'),
 	product: createRequestActionCreators('products/:id'),
+	categories: createRequestActionCreators('products/categories'),
+	category: createRequestActionCreators('products/category/:category'),
 	login: createRequestActionCreators('user/login', user => {
 		return {
 			payload: user,
@@ -27,14 +29,14 @@ export const creators = {
 
 export const actions = {
 	products:
-		(limit = 10, sort = 'asc') =>
+		(limit = 10, sort = 'asc', category = null) =>
 		dispatch => {
 			dispatch(creators.products.begin())
 
 			dispatch({
 				[REQUEST]: {
 					types: [creators.products.success(), creators.products.fail()],
-					endpoint: limit ? `products?sort=${sort}&limit=${limit}` : `products?sort=${sort}`,
+					endpoint: category ? `products/category/${category}?sort=${sort}&limit=${limit}` : `products?sort=${sort}&limit=${limit}`,
 					method: METHOD.get,
 					authorized: false,
 				},
@@ -47,6 +49,18 @@ export const actions = {
 			[REQUEST]: {
 				types: [creators.product.success(), creators.product.fail()],
 				endpoint: `products/${id}`,
+				method: METHOD.get,
+				authorized: false,
+			},
+		})
+	},
+	categories: () => dispatch => {
+		dispatch(creators.categories.begin())
+
+		dispatch({
+			[REQUEST]: {
+				types: [creators.categories.success(), creators.categories.fail()],
+				endpoint: `products/categories`,
 				method: METHOD.get,
 				authorized: false,
 			},

@@ -1,14 +1,20 @@
 {
 	"title": "E-Ticaret Uygulama",
 	"generic": {
+		"sort": "Sırala",
+		"limit": "Adet",
+		"asc": "Artan",
+		"desc": "Azalan",
+		"cat": "Seçenekler"
+	},
+	"product": {
 		"description": "Açıklama",
 		"price": "Fiyat",
 		"details": "Ayrıntıları Göster",
 		"rate": "Puan",
-		"count": "Puanlanma Sayısı",
-		"sort": "Sırala",
-		"limit": "Adet",
-		"asc": "Artan",
-		"desc": "Azalan"
+		"count": "Puanlanma Sayısı"
+	},
+	"shopCart": {
+		"addCart": "Alışveriş Listesine Ekle"
 	}
 }
