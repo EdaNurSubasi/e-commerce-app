@@ -82,7 +82,7 @@ export const product = createReducer(
 			})
 			.addCase(creators.categories.fail, (state, action) => {
 				state.categories = {
-					data: state.categories.date,
+					data: state.categories.data,
 					waiting: false,
 					error: action.error,
 				}

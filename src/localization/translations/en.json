@@ -15,6 +15,12 @@
 		"count": "Rating Count"
 	},
 	"shopCart": {
-		"addCart": "Add to Shopping List"
+		"addCart": "Add to Shopping List",
+		"pageTitle": "Products In Cart",
+		"total": "Total Price",
+		"proceed": "Proceed To Checkout"
+	},
+	"error": {
+		"dataNotFound": "There is Nothing to Show."
 	}
 }
