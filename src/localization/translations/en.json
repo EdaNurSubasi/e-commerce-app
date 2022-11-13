@@ -11,7 +11,7 @@
 		"title": "Login Form",
 		"username": "Username",
 		"password": "Password",
-		"submit": "Submit Form",
+		"submit": "Login",
 		"error": "This Field is Required!"
 	},
 	"product": {
@@ -26,6 +26,31 @@
 		"pageTitle": "Products In Cart",
 		"total": "Total Price",
 		"proceed": "Proceed To Checkout"
+	},
+	"checkout": {
+		"address": {
+			"title": "Address Information",
+			"firstName": "First Name",
+			"lastName": "Last Name",
+			"email": "E-Mail",
+			"phone": "Phone Number",
+			"city": "City",
+			"country": "Country",
+			"address": "Address",
+			"zip": "Zip Code",
+			"submit": "Save",
+			"error": "This Field is Required!"
+		},
+		"payment": {
+			"title": "Payment Information",
+			"name": "Card Owner",
+			"email": "E-Mail",
+			"phone": "Phone Number",
+			"cardNumber": "Card Number",
+			"expirationDate": "ExpirationDate",
+			"cvc": "CVC",
+			"error": "This Field is Required!"
+		}
 	},
 	"error": {
 		"dataNotFound": "There is Nothing to Show."

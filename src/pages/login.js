@@ -39,12 +39,12 @@ const Login = () => {
 	useEffect(() => {
 		if (session.data) {
 			console.log(session.data)
-			navigate('/cart')
+			navigate('/payment')
 		}
 	}, [])
 
 	if (session.data) {
-		return <Navigate to={'/cart'} />
+		return <Navigate to={'/payment'} />
 	}
 
 	return (

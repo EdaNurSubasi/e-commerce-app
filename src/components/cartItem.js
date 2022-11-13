@@ -25,15 +25,22 @@ const CartItem = ({item, onAddCart, onRemoveCart}) => {
 					</Typography>
 				</CardContent>
 				<Box sx={{display: 'flex', alignItems: 'center', pl: 1, pb: 1, flex: 5}}>
-					<IconButton onClick={handleRemove}>
-						<RemoveIcon />
-					</IconButton>
+					{onAddCart && (
+						<IconButton onClick={handleRemove}>
+							<RemoveIcon />
+						</IconButton>
+					)}
+
 					<Typography variant="subtitle1" color="text.secondary" component="div">
 						{item.quantity}
 					</Typography>
-					<IconButton onClick={handleAdd}>
-						<AddIcon />
-					</IconButton>
+
+					{onAddCart && (
+						<IconButton onClick={handleAdd}>
+							<AddIcon />
+						</IconButton>
+					)}
+
 					<Typography fontWeight={'bold'} color="text.secondary" component="div">
 						${item.quantity * item.product.price}
 					</Typography>

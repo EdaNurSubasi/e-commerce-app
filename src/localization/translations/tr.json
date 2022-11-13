@@ -11,7 +11,7 @@
 		"title": "Giriş Formu",
 		"username": "Kullanıcı Adı",
 		"password": "Parola",
-		"submit": "Formu Gönder",
+		"submit": "Giriş",
 		"error": "Bu Alan Gereklidir!"
 	},
 	"product": {
@@ -26,6 +26,30 @@
 		"pageTitle": "Sepetteki Ürünler",
 		"total": "Toplam Tutar",
 		"proceed": "Ödemeye İlerle."
+	},
+	"checkout": {
+		"address": {
+			"title": "Address Bilgileri",
+			"firstName": "İsim",
+			"lastName": "Soyisim",
+			"email": "E-Mail",
+			"phone": "Telefon Numarası",
+			"country": "Ülke",
+			"city": "Şehir",
+			"address": "Adres",
+			"zip": "Zip Kodu",
+			"error": "Bu Alan Gereklidir!"
+		},
+		"payment": {
+			"title": "Ödeme Bilgileri",
+			"name": "Kart Sahibi",
+			"email": "E-Mail",
+			"phone": "Telefon Numarası",
+			"cardNumber": "Kart Numarası",
+			"expirationDate": "Son Kullanım Tarihi",
+			"cvc": "CVC",
+			"error": "Bu Alan Gereklidir!"
+		}
 	},
 	"error": {
 		"dataNotFound": "Gösterilecek Herhangi Bir Şey Bulunamamıştır."
