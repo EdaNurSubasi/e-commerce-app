@@ -2,8 +2,9 @@ import React, {useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {ProductActions} from '../store/actions'
-import {Stack} from '@mui/material'
+import {CircularProgress, Rating, Stack, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
+import {translate} from '../localization'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -62,6 +63,7 @@ const Product = () => {
 
 	return (
 		<Stack>
+			{product.waiting && <CircularProgress />}
 			{product.data?.id && (
 				<div className={style.container}>
 					<div className={style.title}>{product.data.title}</div>
@@ -69,8 +71,17 @@ const Product = () => {
 					<img className={style.image} src={product.data.image} />
 					<div className={style.price}>${product.data.price}</div>
 					<div className={style.description}>{product.data.description}</div>
-					<div className={style.rating}>ICON {product.data.rating.rate}</div>
-					<div className={style.rating}>ICON {product.data.rating.count}</div>
+					<div className={style.rating}>
+						<Stack direction={'row'} spacing={2} justifyContent="center" alignItems={'center'}>
+							<Rating value={product.data.rating.rate} readOnly />
+							<Typography variant="h5"> {product.data.rating.rate}</Typography>
+						</Stack>
+					</div>
+					<div className={style.rating}>
+						<Stack direction={'row'} spacing={2} justifyContent="center" alignItems={'center'}>
+							<Typography variant="h5"> {`${product.data.rating.count} ${translate.string('product.count')}`}</Typography>
+						</Stack>
+					</div>
 				</div>
 			)}
 		</Stack>

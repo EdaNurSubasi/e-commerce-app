@@ -1,10 +1,11 @@
-import * as React from 'react'
-import {AddressForm, CartItem, PaymentForm} from '../components'
+import {AddressForm, CartItem, PaymentForm, Toast} from '../components'
 import {Card, Divider, Stack} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {CartActions} from '../store/actions'
+import {useState} from 'react'
+import {translate} from '../localization'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -42,22 +43,27 @@ export default function Checkout() {
 
 	const cartStore = useSelector(state => state.cart.store)
 
-	const [toggleForm, setToggleForm] = React.useState(true)
+	const [toggleForm, setToggleForm] = useState(true)
+	const [successOpen, setSuccessOpen] = useState(false)
+	const [errorOpen, setErrorOpen] = useState(false)
 
 	const handleAddressSubmit = data => {
 		setToggleForm(false)
+		setSuccessOpen(true)
 	}
 
 	const handlePaymentSubmit = data => {
 		for (const key of Object.keys(info)) {
 			if (data[key] != info[key]) {
-				console.log('False')
+				setErrorOpen(true)
 				return
 			}
 		}
+		setSuccessOpen(true)
 		dispatch(CartActions.clear())
-		navigate('/')
-		console.log('True')
+		setTimeout(() => {
+			navigate('/')
+		}, 2000)
 	}
 
 	return (
@@ -73,6 +79,8 @@ export default function Checkout() {
 			)}
 
 			<Stack className={style.info}>
+				<Toast open={successOpen} message={translate.string('checkout.saved')} severity="success" setOpen={setSuccessOpen} />
+				<Toast open={errorOpen} message={translate.string('error.payment')} severity="error" setOpen={setErrorOpen} />
 				{Object.keys(cartStore.data).map(p => (
 					<Card key={p}>
 						<CartItem item={cartStore.data[p]} />

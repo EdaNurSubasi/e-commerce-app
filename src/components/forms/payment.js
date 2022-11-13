@@ -106,7 +106,7 @@ const Payment = ({onPaymentSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.name?.type === 'required' && <Alert severity="error">{translate.string('checkout.payment.error')}</Alert>}
+								{errors.name?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -127,7 +127,7 @@ const Payment = ({onPaymentSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.email?.type === 'required' && <Alert severity="error">{translate.string('checkout.payment.error')}</Alert>}
+								{errors.email?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -148,7 +148,7 @@ const Payment = ({onPaymentSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.phone?.type === 'required' && <Alert severity="error">{translate.string('checkout.payment.error')}</Alert>}
+								{errors.phone?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 						</Grid>
 						<Grid item className={style.addressInfo}>
@@ -170,9 +170,7 @@ const Payment = ({onPaymentSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.cardNumber?.type === 'required' && (
-									<Alert severity="error">{translate.string('checkout.payment.error')}</Alert>
-								)}
+								{errors.cardNumber?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -192,9 +190,7 @@ const Payment = ({onPaymentSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.expirationDate?.type === 'required' && (
-									<Alert severity="error">{translate.string('checkout.payment.error')}</Alert>
-								)}
+								{errors.expirationDate?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -214,7 +210,7 @@ const Payment = ({onPaymentSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.cvc?.type === 'required' && <Alert severity="error">{translate.string('checkout.payment.error')}</Alert>}
+								{errors.cvc?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 						</Grid>
 					</Stack>

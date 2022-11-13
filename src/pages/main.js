@@ -1,5 +1,5 @@
 import {AccountCircle} from '@mui/icons-material'
-import {AppBar, Badge, Box, Divider, IconButton, Menu, MenuItem, Toolbar, Typography} from '@mui/material'
+import {AppBar, Badge, Box, CssBaseline, Divider, IconButton, Menu, MenuItem, Toolbar, Typography} from '@mui/material'
 import {Stack} from '@mui/system'
 import {makeStyles} from '@mui/styles'
 import React, {useEffect, useState} from 'react'
@@ -12,9 +12,10 @@ import {CartItem} from '../components'
 
 const useStyles = makeStyles(theme => ({
 	container: {
+		display: 'flex',
 		position: 'absolute',
 		flexDirection: 'column',
-		overflow: 'hidden',
+		overflow: 'auto',
 		width: '100%',
 		height: '100%',
 	},
@@ -23,23 +24,14 @@ const useStyles = makeStyles(theme => ({
 	},
 	header: {
 		position: 'absolute',
-		top: 0,
-		left: 0,
-		right: 0,
-		bottom: 60,
 		width: '100%',
 		height: 60,
 		color: 'white',
 	},
 	content: {
-		position: 'relative',
-		top: 60,
-		left: 0,
-		bottom: 60,
-		right: 0,
-		width: '100%',
-		height: '100%',
-		overflow: 'auto',
+		display: 'flex',
+		flex: 1,
+		marginTop: 64,
 	},
 	footer: {
 		position: 'absolute',
@@ -62,6 +54,7 @@ const Main = () => {
 	const navigate = useNavigate()
 
 	const cartStore = useSelector(state => state.cart.store)
+	const session = useSelector(state => state.user.session)
 
 	const open = Boolean(anchorEl)
 	const handleExpendClick = event => {
@@ -104,6 +97,7 @@ const Main = () => {
 
 	return (
 		<Stack className={style.container}>
+			<CssBaseline />
 			<AppBar className={style.header}>
 				<Toolbar>
 					<Typography variant="h6" component="div" sx={{flexGrow: 1, paddingLeft: 2}}>
@@ -115,21 +109,27 @@ const Main = () => {
 						</Badge>
 					</IconButton>
 					<IconButton size="large" edge="start" color="inherit" sx={{mr: 2}}>
-						<AccountCircle />
+						{session.data ? (
+							<Badge variant="dot" color="secondary">
+								<AccountCircle />
+							</Badge>
+						) : (
+							<AccountCircle />
+						)}
 					</IconButton>
 				</Toolbar>
 			</AppBar>
-			<Stack className={style.content}>
+			<main className={style.content}>
 				<Outlet />
-			</Stack>
-			<div className={style.footer}>
+			</main>
+			{/* <div className={style.footer}>
 				<Toolbar>
 					<IconButton size="large" edge="start" color="inherit" sx={{mr: 2}}></IconButton>
 					<Typography variant="h6" component="div" sx={{flexGrow: 1}}>
 						{translate.string('title').toUpperCase()}
 					</Typography>
 				</Toolbar>
-			</div>
+			</div> */}
 			<Menu className={style.card} anchorEl={anchorEl} open={open} onClose={handleClose}>
 				{Object.keys(cartStore.data).map(p => (
 					<MenuItem key={p}>

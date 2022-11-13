@@ -105,9 +105,7 @@ const Address = ({onAddressSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.firstName?.type === 'required' && (
-									<Alert severity="error">{translate.string('checkout.address.error')}</Alert>
-								)}
+								{errors.firstName?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -128,7 +126,7 @@ const Address = ({onAddressSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.lastName?.type === 'required' && <Alert severity="error">{translate.string('checkout.address.error')}</Alert>}
+								{errors.lastName?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -149,7 +147,7 @@ const Address = ({onAddressSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.email?.type === 'required' && <Alert severity="error">{translate.string('checkout.address.error')}</Alert>}
+								{errors.email?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -170,7 +168,7 @@ const Address = ({onAddressSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.phone?.type === 'required' && <Alert severity="error">{translate.string('checkout.address.error')}</Alert>}
+								{errors.phone?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 						</Grid>
 						<Grid item className={style.addressInfo}>
@@ -192,7 +190,7 @@ const Address = ({onAddressSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.country?.type === 'required' && <Alert severity="error">{translate.string('checkout.address.error')}</Alert>}
+								{errors.country?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -212,7 +210,7 @@ const Address = ({onAddressSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.city?.type === 'required' && <Alert severity="error">{translate.string('checkout.address.error')}</Alert>}
+								{errors.city?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -232,7 +230,7 @@ const Address = ({onAddressSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.address?.type === 'required' && <Alert severity="error">{translate.string('checkout.address.error')}</Alert>}
+								{errors.address?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -252,7 +250,7 @@ const Address = ({onAddressSubmit}) => {
 										control={control}
 									/>
 								</Box>
-								{errors.zipcode?.type === 'required' && <Alert severity="error">{translate.string('checkout.address.error')}</Alert>}
+								{errors.zipcode?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 						</Grid>
 					</Stack>

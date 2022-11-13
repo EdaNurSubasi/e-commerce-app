@@ -1,7 +1,7 @@
-import {Button, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography} from '@mui/material'
+import {Button, CircularProgress, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography} from '@mui/material'
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {Filter, Product} from '../components'
+import {Filter, Product, Toast} from '../components'
 import {translate} from '../localization'
 import {ProductActions} from '../store/actions'
 
@@ -13,6 +13,7 @@ const Home = () => {
 	const [limit, setLimit] = useState(10)
 	const [sort, setSort] = useState('asc')
 	const [cat, setCat] = useState(null)
+	const [open, setOpen] = useState(false)
 
 	const handleLimitChange = limit => {
 		setLimit(limit)
@@ -24,7 +25,10 @@ const Home = () => {
 
 	const handleCatChange = category => {
 		setCat(category)
-		console.log(category)
+	}
+
+	const handleProductAddClick = () => {
+		setOpen(true)
 	}
 
 	useEffect(() => {
@@ -41,30 +45,39 @@ const Home = () => {
 				<Typography gutterBottom textAlign="center" marginTop={10} fontWeight={'bolder'} variant="h4" component="div">
 					{translate.string('generic.cat')}
 				</Typography>
-				<Stack justifyContent="center" marginTop={20} padding={1} spacing={2}>
-					{categories.data.map(category => (
-						<Button variant="text" key={category} onClick={() => handleCatChange(category)}>
-							{category}
-						</Button>
-					))}
-				</Stack>
+				{!categories.waiting ? (
+					<Stack justifyContent="center" marginTop={20} padding={1} spacing={2}>
+						{categories.data.map(category => (
+							<Button variant="text" key={category} onClick={() => handleCatChange(category)}>
+								{category}
+							</Button>
+						))}
+					</Stack>
+				) : (
+					<CircularProgress />
+				)}
 			</Stack>
-			<Stack padding={5}>
+			<Stack padding={2}>
 				<Filter limit={limit} sort={sort} onLimitChange={handleLimitChange} onSortChange={handleSortChange} />
-				<Grid
-					container
-					direction="row"
-					alignItems={'flex-start'}
-					justifyContent="center"
-					spacing={{xs: 2, md: 3}}
-					columns={{xs: 4, sm: 6, md: 12}}>
-					{products.data.map(product => (
-						<Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-							<Product product={product} />
-						</Grid>
-					))}
-				</Grid>
+				{!products.waiting ? (
+					<Grid
+						container
+						direction="row"
+						alignItems={'flex-start'}
+						justifyContent="center"
+						spacing={{xs: 2, md: 3}}
+						columns={{xs: 4, sm: 6, md: 12}}>
+						{products.data.map(product => (
+							<Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+								<Product product={product} onProductAddClicked={handleProductAddClick} />
+							</Grid>
+						))}
+					</Grid>
+				) : (
+					<CircularProgress />
+				)}
 			</Stack>
+			<Toast open={open} message={translate.string('product.addMessage')} severity="success" setOpen={setOpen} />
 		</Stack>
 	)
 }

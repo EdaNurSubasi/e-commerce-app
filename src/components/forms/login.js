@@ -1,4 +1,4 @@
-import {Alert, Box, Button, Grid, Stack, TextField, Typography} from '@mui/material'
+import {Alert, Box, Button, CircularProgress, Grid, Stack, TextField, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 import React from 'react'
 import {translate} from '../../localization'
@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }))
 
-const LoginForm = ({onLogin}) => {
+const LoginForm = ({onLogin, waiting}) => {
 	const style = useStyles()
 
 	const {
@@ -45,7 +45,6 @@ const LoginForm = ({onLogin}) => {
 	})
 
 	const onSubmit = data => {
-		console.log(data)
 		onLogin(data)
 	}
 
@@ -76,7 +75,7 @@ const LoginForm = ({onLogin}) => {
 								control={control}
 							/>
 						</Box>
-						{errors.username?.type === 'required' && <Alert severity="error">{translate.string('login.error')}</Alert>}
+						{errors.username?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 					</Grid>
 					<Grid item className={style.password}>
 						<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -97,13 +96,17 @@ const LoginForm = ({onLogin}) => {
 								control={control}
 							/>
 						</Box>
-						{errors.password?.type === 'required' && <Alert severity="error">{translate.string('login.error')}</Alert>}
+						{errors.password?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 					</Grid>
 					<Grid item className={style.buttons}>
-						<Button fullWidth type="submit" color="success">
-							<CheckIcon />
-							<Typography fontWeight={'bold'}>{translate.string('login.submit')}</Typography>
-						</Button>
+						{!waiting ? (
+							<Button fullWidth type="submit" color="success">
+								<CheckIcon />
+								<Typography fontWeight={'bold'}>{translate.string('login.submit')}</Typography>
+							</Button>
+						) : (
+							<CircularProgress />
+						)}
 					</Grid>
 				</form>
 			</Grid>

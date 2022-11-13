@@ -2,9 +2,11 @@ import {Paper, Stack} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {LoginForm} from '../components'
+import {LoginForm, Toast} from '../components'
 import {UserActions} from '../store/actions'
 import {Navigate, useNavigate} from 'react-router-dom'
+import {translate} from '../localization'
+import {useState} from 'react'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -28,20 +30,27 @@ const useStyles = makeStyles(theme => ({
 const Login = () => {
 	const style = useStyles()
 	const dispatch = useDispatch()
-	const session = useSelector(state => state.user.session)
 	const navigate = useNavigate()
 
+	const [open, setOpen] = useState(false)
+
+	const session = useSelector(state => state.user.session)
+
 	const handleLogin = user => {
-		console.log(user)
 		dispatch(UserActions.login(user))
 	}
 
 	useEffect(() => {
 		if (session.data) {
-			console.log(session.data)
 			navigate('/payment')
 		}
 	}, [])
+
+	useEffect(() => {
+		if (session.error) {
+			setOpen(true)
+		}
+	}, [session.error])
 
 	if (session.data) {
 		return <Navigate to={'/payment'} />
@@ -50,7 +59,8 @@ const Login = () => {
 	return (
 		<div className={style.container}>
 			<Paper className={style.paper} elevation={3}>
-				<LoginForm onLogin={handleLogin} />
+				<LoginForm onLogin={handleLogin} waiting={session.waiting} />
+				<Toast open={open} message={translate.string('error.login')} severity="error" setOpen={setOpen} />
 			</Paper>
 		</div>
 	)

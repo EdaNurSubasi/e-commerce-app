@@ -11,15 +11,16 @@
 		"title": "Login Form",
 		"username": "Username",
 		"password": "Password",
-		"submit": "Login",
-		"error": "This Field is Required!"
+		"submit": "Login"
 	},
 	"product": {
 		"description": "Description",
 		"price": "Price",
 		"details": "Show Details",
 		"rate": "Rating",
-		"count": "Rating Count"
+		"count": "Evaluations",
+		"addMessage": "Product Added to the Cart",
+		"removeMessage": "Product Removed from the Cart"
 	},
 	"shopCart": {
 		"addCart": "Add to Shopping List",
@@ -38,8 +39,7 @@
 			"country": "Country",
 			"address": "Address",
 			"zip": "Zip Code",
-			"submit": "Save",
-			"error": "This Field is Required!"
+			"submit": "Save"
 		},
 		"payment": {
 			"title": "Payment Information",
@@ -48,11 +48,14 @@
 			"phone": "Phone Number",
 			"cardNumber": "Card Number",
 			"expirationDate": "ExpirationDate",
-			"cvc": "CVC",
-			"error": "This Field is Required!"
-		}
+			"cvc": "CVC"
+		},
+		"saved": "Information Saved."
 	},
 	"error": {
-		"dataNotFound": "There is Nothing to Show."
+		"dataNotFound": "There is Nothing to Show.",
+		"required": "This Field is Required!",
+		"login": "Username or Password is not Correct!",
+		"payment": "Check Your Credit Card Information! Payment is not Successful!"
 	}
 }
