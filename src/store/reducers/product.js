@@ -29,13 +29,14 @@ export const product = createReducer(
 				state.products.waiting = true
 			})
 			.addCase(creators.products.success, (state, action) => {
+				//TODO: Non-serializable Object error fix?
 				let ps = action.payload.map(element => {
 					const p = new Product()
 					p.decode(element)
 					return p
 				})
 				state.products = {
-					data: ps,
+					data: action.payload,
 					waiting: false,
 					error: null,
 				}
@@ -56,7 +57,7 @@ export const product = createReducer(
 				const p = new Product()
 				p.decode(action.payload)
 				state.product = {
-					data: p,
+					data: action.payload,
 					waiting: false,
 					error: null,
 				}

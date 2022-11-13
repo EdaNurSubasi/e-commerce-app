@@ -10,6 +10,7 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout'
 import {useNavigate} from 'react-router-dom'
+import {Toast} from '../components'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -87,6 +88,7 @@ const Cart = () => {
 	const navigate = useNavigate()
 
 	const [totalPrice, setTotalPrice] = useState(0.0)
+	const [open, setOpen] = useState(false)
 
 	const cartStore = useSelector(state => state.cart.store)
 
@@ -99,6 +101,9 @@ const Cart = () => {
 	}
 
 	const handleRemove = (product, count = 1) => {
+		if (count == cartStore.data[product.id].quantity) {
+			setOpen(true)
+		}
 		dispatch(CartActions.store(product, count * -1))
 	}
 
@@ -174,6 +179,7 @@ const Cart = () => {
 					</Typography>
 				</Grid>
 			)}
+			<Toast open={open} message={translate.string('product.removeMessage')} severity="success" setOpen={setOpen} />
 		</Stack>
 	)
 }

@@ -11,15 +11,16 @@
 		"title": "Giriş Formu",
 		"username": "Kullanıcı Adı",
 		"password": "Parola",
-		"submit": "Formu Gönder",
-		"error": "Bu Alan Gereklidir!"
+		"submit": "Giriş"
 	},
 	"product": {
 		"description": "Açıklama",
 		"price": "Fiyat",
 		"details": "Ayrıntıları Göster",
 		"rate": "Puan",
-		"count": "Puanlanma Sayısı"
+		"count": "Değerlendirme Sayısı",
+		"addMessage": "Ürün Sepete Eklendi.",
+		"removeMessage": "Ürün Sepetten Çıkartıldı."
 	},
 	"shopCart": {
 		"addCart": "Alışveriş Listesine Ekle",
@@ -27,7 +28,33 @@
 		"total": "Toplam Tutar",
 		"proceed": "Ödemeye İlerle."
 	},
+	"checkout": {
+		"address": {
+			"title": "Address Bilgileri",
+			"firstName": "İsim",
+			"lastName": "Soyisim",
+			"email": "E-Mail",
+			"phone": "Telefon Numarası",
+			"country": "Ülke",
+			"city": "Şehir",
+			"address": "Adres",
+			"zip": "Zip Kodu"
+		},
+		"payment": {
+			"title": "Ödeme Bilgileri",
+			"name": "Kart Sahibi",
+			"email": "E-Mail",
+			"phone": "Telefon Numarası",
+			"cardNumber": "Kart Numarası",
+			"expirationDate": "Son Kullanım Tarihi",
+			"cvc": "CVC"
+		},
+		"saved": "Bilgiler Kaydedildi."
+	},
 	"error": {
-		"dataNotFound": "Gösterilecek Herhangi Bir Şey Bulunamamıştır."
+		"dataNotFound": "Gösterilecek Herhangi Bir Şey Bulunamamıştır.",
+		"required": "Bu Alan Gereklidir!",
+		"login": "Kullanıcı Adı veya Şifre Hatalı!",
+		"payment": "Kredi Kartı Bilgilerini Kontrol Ediniz! Ödeme İşlemi Tamamlanamadı!"
 	}
 }

@@ -6,10 +6,14 @@ export const creators = {
 			payload: {pr: product, c: count},
 		}
 	}),
+	clear: createAction('cart/clear'),
 }
 
 export const actions = {
 	store: (product, count) => dispatch => {
 		dispatch(creators.store(product, count))
+	},
+	clear: () => dispatch => {
+		dispatch(creators.clear())
 	},
 }

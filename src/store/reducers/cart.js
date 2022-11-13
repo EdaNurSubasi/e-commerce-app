@@ -24,6 +24,10 @@ export const cart = createReducer(
 					state.store.data[action.payload.pr.id] = {quantity: action.payload.c, product: action.payload.pr}
 				}
 			})
+
+			.addCase(creators.clear, (state, action) => {
+				state.store.data = {}
+			})
 	}
 )
 
