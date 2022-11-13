@@ -4,13 +4,16 @@ import './App.css'
 import {ConfigProvider} from './config'
 import {LocalizationProvider} from './localization'
 import RouteStack from './routes/index'
+import {SecurityProvider} from './security'
 
 function App() {
 	return (
 		<ConfigProvider>
 			<LocalizationProvider>
 				<BrowserRouter>
-					<RouteStack />
+					<SecurityProvider>
+						<RouteStack />
+					</SecurityProvider>
 				</BrowserRouter>
 			</LocalizationProvider>
 		</ConfigProvider>
