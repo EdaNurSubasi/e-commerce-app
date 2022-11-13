@@ -7,6 +7,13 @@
 		"desc": "Azalan",
 		"cat": "Seçenekler"
 	},
+	"login": {
+		"title": "Giriş Formu",
+		"username": "Kullanıcı Adı",
+		"password": "Parola",
+		"submit": "Formu Gönder",
+		"error": "Bu Alan Gereklidir!"
+	},
 	"product": {
 		"description": "Açıklama",
 		"price": "Fiyat",

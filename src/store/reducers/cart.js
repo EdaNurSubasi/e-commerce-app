@@ -1,10 +1,11 @@
 import {createReducer} from '@reduxjs/toolkit'
+import Security from '../../utils/security'
 import {creators} from '../actions/cart'
 
 export const cart = createReducer(
 	{
 		store: {
-			data: {}, // {id: {quantity:product}
+			data: Security.cart.get() ? Security.cart.get() : {}, // {id: {quantity:product}
 			waiting: false,
 			error: null,
 		},

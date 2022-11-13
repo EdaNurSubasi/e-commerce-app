@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout'
+import {useNavigate} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -83,6 +84,7 @@ const useStyles = makeStyles(theme => ({
 const Cart = () => {
 	const style = useStyles()
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	const [totalPrice, setTotalPrice] = useState(0.0)
 
@@ -98,6 +100,10 @@ const Cart = () => {
 
 	const handleRemove = (product, count = 1) => {
 		dispatch(CartActions.store(product, count * -1))
+	}
+
+	const handleClick = () => {
+		navigate('/login')
 	}
 
 	const calculateTotalPrice = () => {
@@ -119,7 +125,7 @@ const Cart = () => {
 			{Object.keys(cartStore.data).length ? (
 				<Grid container className={style.cart}>
 					{Object.keys(cartStore.data).map(p => (
-						<Grid item className={style.cartItem}>
+						<Grid item key={p} className={style.cartItem}>
 							<Card className={style.itemContainer}>
 								<Stack className={style.image}>
 									<CardMedia sx={{maxWidth: '50%'}} component="img" image={cartStore.data[p].product.image} />
@@ -153,7 +159,7 @@ const Cart = () => {
 						<Typography className={style.price} fontWeight={'bold'} paddingBottom={'2%'}>
 							{translate.string('shopCart.total')}: ${totalPrice}
 						</Typography>
-						<Button className={style.remove} fullWidth variant="contained" color="success">
+						<Button className={style.remove} onClick={handleClick} fullWidth variant="contained" color="success">
 							<ShoppingCartCheckoutIcon />
 							<Typography className={style.error} fontWeight={'bold'}>
 								{translate.string('shopCart.proceed')}

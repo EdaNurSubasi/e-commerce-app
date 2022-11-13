@@ -7,6 +7,13 @@
 		"desc": "Descending",
 		"cat": "Categories"
 	},
+	"login": {
+		"title": "Login Form",
+		"username": "Username",
+		"password": "Password",
+		"submit": "Submit Form",
+		"error": "This Field is Required!"
+	},
 	"product": {
 		"description": "Description",
 		"price": "Price",

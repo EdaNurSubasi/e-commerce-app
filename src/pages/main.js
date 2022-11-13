@@ -12,14 +12,44 @@ import {CartItem} from '../components'
 
 const useStyles = makeStyles(theme => ({
 	container: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
+		position: 'absolute',
 		flexDirection: 'column',
-		padding: 30,
+		overflow: 'hidden',
+		width: '100%',
+		height: '100%',
 	},
 	card: {
 		maxWidth: '55%',
+	},
+	header: {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 60,
+		width: '100%',
+		height: 60,
+		color: 'white',
+	},
+	content: {
+		position: 'relative',
+		top: 60,
+		left: 0,
+		bottom: 60,
+		right: 0,
+		width: '100%',
+		height: '100%',
+		overflow: 'auto',
+	},
+	footer: {
+		position: 'absolute',
+		bottom: 0,
+		left: 0,
+		right: 0,
+		width: '100%',
+		backgroundColor: 'purple',
+		height: 60,
+		textAlign: 'center',
 	},
 }))
 
@@ -73,8 +103,8 @@ const Main = () => {
 	}
 
 	return (
-		<Stack>
-			<AppBar position="sticky" sx={{top: 0, bottom: 'auto'}}>
+		<Stack className={style.container}>
+			<AppBar className={style.header}>
 				<Toolbar>
 					<Typography variant="h6" component="div" sx={{flexGrow: 1, paddingLeft: 2}}>
 						{translate.string('title').toUpperCase()}
@@ -89,15 +119,17 @@ const Main = () => {
 					</IconButton>
 				</Toolbar>
 			</AppBar>
-			<Outlet />
-			<AppBar className={style.footer} position="sticky" sx={{bottom: 0}}>
+			<Stack className={style.content}>
+				<Outlet />
+			</Stack>
+			<div className={style.footer}>
 				<Toolbar>
 					<IconButton size="large" edge="start" color="inherit" sx={{mr: 2}}></IconButton>
 					<Typography variant="h6" component="div" sx={{flexGrow: 1}}>
 						{translate.string('title').toUpperCase()}
 					</Typography>
 				</Toolbar>
-			</AppBar>
+			</div>
 			<Menu className={style.card} anchorEl={anchorEl} open={open} onClose={handleClose}>
 				{Object.keys(cartStore.data).map(p => (
 					<MenuItem key={p}>
