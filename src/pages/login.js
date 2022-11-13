@@ -1,8 +1,10 @@
 import {Paper, Stack} from '@mui/material'
 import {makeStyles} from '@mui/styles'
-import React from 'react'
-import {useDispatch} from 'react-redux'
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {LoginForm} from '../components'
+import {UserActions} from '../store/actions'
+import {Navigate, useNavigate} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -26,9 +28,23 @@ const useStyles = makeStyles(theme => ({
 const Login = () => {
 	const style = useStyles()
 	const dispatch = useDispatch()
+	const session = useSelector(state => state.user.session)
+	const navigate = useNavigate()
 
 	const handleLogin = user => {
 		console.log(user)
+		dispatch(UserActions.login(user))
+	}
+
+	useEffect(() => {
+		if (session.data) {
+			console.log(session.data)
+			navigate('/cart')
+		}
+	}, [])
+
+	if (session.data) {
+		return <Navigate to={'/cart'} />
 	}
 
 	return (
