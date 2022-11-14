@@ -16,16 +16,18 @@ const useStyles = makeStyles(theme => ({
 		width: '100%',
 	},
 	address: {
-		padding: '2%',
-		flex: 3,
-	},
-	payment: {
-		padding: '2%',
-		flex: 3,
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		flex: 10,
+		height: '100%',
 	},
 	info: {
 		display: 'flex',
-		flex: 1,
+		flex: 8,
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: '100%',
 	},
 }))
 
@@ -73,7 +75,7 @@ export default function Checkout() {
 					<AddressForm onAddressSubmit={handleAddressSubmit} />
 				</Stack>
 			) : (
-				<Stack className={style.payment}>
+				<Stack className={style.address}>
 					<PaymentForm onPaymentSubmit={handlePaymentSubmit} />
 				</Stack>
 			)}

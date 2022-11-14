@@ -1,4 +1,4 @@
-import {Alert, Button, Grid, Box, Stack, TextField, Typography} from '@mui/material'
+import {Alert, Button, Grid, Box, Stack, TextField, Typography, Divider} from '@mui/material'
 import React from 'react'
 import {useForm, Controller} from 'react-hook-form'
 import {AccountCircle} from '@mui/icons-material'
@@ -17,8 +17,6 @@ const useStyles = makeStyles(theme => ({
 	container: {
 		display: 'flex',
 		flexDirection: 'column',
-		height: '100%',
-		width: '100%',
 	},
 	title: {
 		padding: '2%',
@@ -171,6 +169,7 @@ const Address = ({onAddressSubmit}) => {
 								{errors.phone?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 						</Grid>
+						<Divider orientation="vertical" variant="middle" flexItem />
 						<Grid item className={style.addressInfo}>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>

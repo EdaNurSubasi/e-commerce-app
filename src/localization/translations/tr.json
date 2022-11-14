@@ -20,13 +20,23 @@
 		"rate": "Puan",
 		"count": "Değerlendirme Sayısı",
 		"addMessage": "Ürün Sepete Eklendi.",
-		"removeMessage": "Ürün Sepetten Çıkartıldı."
+		"removeMessage": "Ürün Sepetten Çıkartıldı.",
+		"category": {
+			"all": "Hepsi",
+			"electronics": "Elektronik",
+			"jewelery": "Takı / Mücevher",
+			"men's clothing": "Erkek Giyim",
+			"women's clothing": "Kadın Giyim"
+		}
 	},
 	"shopCart": {
-		"addCart": "Alışveriş Listesine Ekle",
+		"addCart": "Sepetine Ekle",
+		"delete": "Ürünü Sil",
+		"update": "Ürünü Güncelle",
 		"pageTitle": "Sepetteki Ürünler",
 		"total": "Toplam Tutar",
-		"proceed": "Ödemeye İlerle."
+		"proceed": "Ödemeye İlerle.",
+		"go": "Sepete Git"
 	},
 	"checkout": {
 		"address": {

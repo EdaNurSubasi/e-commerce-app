@@ -20,13 +20,23 @@
 		"rate": "Rating",
 		"count": "Evaluations",
 		"addMessage": "Product Added to the Cart",
-		"removeMessage": "Product Removed from the Cart"
+		"removeMessage": "Product Removed from the Cart",
+		"category": {
+			"all": "All",
+			"electronics": "Electronics",
+			"jewelery": "Jewelery",
+			"men's clothing": "Man's Clothing",
+			"women's clothing": "Woman's Clothing"
+		}
 	},
 	"shopCart": {
-		"addCart": "Add to Shopping List",
+		"addCart": "Add to Cart",
+		"delete": "Delete Product",
+		"update": "Update Product",
 		"pageTitle": "Products In Cart",
 		"total": "Total Price",
-		"proceed": "Proceed To Checkout"
+		"proceed": "Proceed To Checkout",
+		"go": "Go To Chart"
 	},
 	"checkout": {
 		"address": {

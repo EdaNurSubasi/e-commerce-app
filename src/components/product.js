@@ -10,9 +10,19 @@ const useStyles = makeStyles(theme => ({
 	container: {
 		display: 'flex',
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'space-between',
 		flexDirection: 'column',
-		height: 600,
+		height: 500,
+		padding: 20,
+	},
+	image: {
+		height: 120,
+		maxWidth: '100%',
+	},
+	info: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-between',
 	},
 }))
 
@@ -32,14 +42,16 @@ const Product = ({product, onProductAddClicked}) => {
 	}
 
 	return (
-		<Card className={style.container}>
-			<CardMedia component="img" image={product.image} sx={{width: '25%'}} />
-			<CardContent>
-				<Typography gutterBottom textAlign="center" variant="h5" component="div">
-					{product.title}
-				</Typography>
+		<Card className={style.container} elevation={4}>
+			<div className={style.image}>
+				<CardMedia component="img" image={product.image} sx={{maxWidth: '100%', maxHeight: '100%'}} />
+			</div>
+			<CardContent className={style.info}>
 				<Typography gutterBottom textAlign="center" variant="h6" component="div">
 					{product.category}
+				</Typography>
+				<Typography gutterBottom textAlign="center" variant="h5" component="div">
+					{product.title}
 				</Typography>
 				<Typography className="bottom" display="flex" justifyContent="space-between" variant="subtitle1" component="div">
 					{translate.string('product.price')}: ${product.price}

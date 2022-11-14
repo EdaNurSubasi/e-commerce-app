@@ -11,7 +11,7 @@ const Filter = ({limit, sort, onSortChange, onLimitChange}) => {
 		onLimitChange(event.target.value)
 	}
 	return (
-		<Stack padding={5} direction={'row'} spacing={2}>
+		<Stack padding={2} direction={'row'} spacing={2}>
 			<FormControl fullWidth>
 				<InputLabel>{translate.string('generic.sort')}</InputLabel>
 				<Select value={sort} label={translate.string('generic.sort')} onChange={handleSortChange}>
