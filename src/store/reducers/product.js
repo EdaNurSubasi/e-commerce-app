@@ -20,6 +20,11 @@ export const product = createReducer(
 			waiting: false,
 			error: null,
 		},
+		delete: {
+			data: null,
+			waiting: false,
+			error: null,
+		},
 	},
 	builder => {
 		builder
@@ -84,6 +89,25 @@ export const product = createReducer(
 			.addCase(creators.categories.fail, (state, action) => {
 				state.categories = {
 					data: state.categories.data,
+					waiting: false,
+					error: action.error,
+				}
+			})
+
+			//Delete
+			.addCase(creators.delete.begin, (state, action) => {
+				state.delete.waiting = true
+			})
+			.addCase(creators.delete.success, (state, action) => {
+				state.delete = {
+					data: action.payload,
+					waiting: false,
+					error: null,
+				}
+			})
+			.addCase(creators.delete.fail, (state, action) => {
+				state.delete = {
+					data: state.delete.data,
 					waiting: false,
 					error: action.error,
 				}

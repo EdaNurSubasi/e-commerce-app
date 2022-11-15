@@ -141,11 +141,15 @@ const Payment = ({onPaymentSubmit}) => {
 												onChange={onChange}
 											/>
 										)}
-										rules={{required: true}}
+										rules={{required: true, pattern: /^[0-9]+$/i, maxLength: 11, minLength: 11}}
 										name={'phone'}
 										control={control}
 									/>
 								</Box>
+								{(errors.phone?.type === 'maxLength' || errors.phone?.type === 'minLength') && (
+									<Alert severity="error">{translate.string('error.phone')}</Alert>
+								)}
+								{errors.phone?.type === 'pattern' && <Alert severity="error">{translate.string('error.pattern')}</Alert>}
 								{errors.phone?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 						</Grid>
@@ -160,15 +164,20 @@ const Payment = ({onPaymentSubmit}) => {
 												error={errors.cardNumber?.type === 'required'}
 												label={`${translate.string('checkout.payment.cardNumber')}`}
 												value={value}
-												{...register('cardNumber', {required: true})}
+												{...register('cardNumber')}
 												onChange={onChange}
 												variant="standard"
 											/>
 										)}
+										rules={{required: true, pattern: /^[0-9]+$/i, maxLength: 16, minLength: 16}}
 										name={'cardNumber'}
 										control={control}
 									/>
 								</Box>
+								{errors.cardNumber?.type === 'pattern' && <Alert severity="error">{translate.string('error.pattern')}</Alert>}
+								{(errors.cardNumber?.type === 'maxLength' || errors.phone?.type === 'minLength') && (
+									<Alert severity="error">{translate.string('error.cardNumber')}</Alert>
+								)}
 								{errors.cardNumber?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>

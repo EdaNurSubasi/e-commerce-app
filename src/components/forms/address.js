@@ -12,6 +12,7 @@ import LocationCityIcon from '@mui/icons-material/LocationCity'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import MarkunreadMailboxIcon from '@mui/icons-material/MarkunreadMailbox'
 import FlagIcon from '@mui/icons-material/Flag'
+import InputMask from 'react-input-mask'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -155,17 +156,21 @@ const Address = ({onAddressSubmit}) => {
 											<TextField
 												error={errors.phone?.type === 'required'}
 												label={`${translate.string('checkout.address.phone')}`}
-												type="phone"
+												type="tel"
 												variant="standard"
 												value={value}
 												onChange={onChange}
 											/>
 										)}
-										rules={{required: true}}
+										rules={{required: true, pattern: /[0-9]+$/i, maxLength: 11, minLength: 11}}
 										name={'phone'}
 										control={control}
 									/>
 								</Box>
+								{errors.phone?.type === 'pattern' && <Alert severity="error">{translate.string('error.pattern')}</Alert>}
+								{(errors.phone?.type === 'maxLength' || errors.phone?.type === 'minLength') && (
+									<Alert severity="error">{translate.string('error.phone')}</Alert>
+								)}
 								{errors.phone?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 						</Grid>

@@ -7,6 +7,7 @@ import {
 	InputLabel,
 	LinearProgress,
 	MenuItem,
+	Pagination,
 	Paper,
 	Select,
 	Stack,
@@ -57,6 +58,8 @@ const Home = () => {
 	const [sort, setSort] = useState('asc')
 	const [cat, setCat] = useState(null)
 	const [open, setOpen] = useState(false)
+	const [item, setItem] = useState(0)
+	const [selected, setSelected] = useState([])
 
 	const handleLimitChange = limit => {
 		setLimit(limit)
@@ -73,6 +76,20 @@ const Home = () => {
 	const handleProductAddClick = () => {
 		setOpen(true)
 	}
+
+	const handlePageChange = (data, page) => {
+		console.log(page)
+		setItem((page - 1) * 4)
+	}
+
+	useEffect(() => {
+		setSelected(products.data.slice(item, 4 + item))
+		setItem(0)
+	}, [products.data])
+
+	useEffect(() => {
+		setSelected(products.data.slice(item, 4 + item))
+	}, [item])
 
 	useEffect(() => {
 		dispatch(ProductActions.products(limit, sort, cat))
@@ -97,7 +114,7 @@ const Home = () => {
 								{translate.string('product.category.all')}
 							</Button>
 							<Divider />
-							{categories.data.map(category => (
+							{categories.data.map((category, i) => (
 								<>
 									<Button variant="text" key={category} onClick={() => handleCatChange(category)} color="warning">
 										{translate.string(`product.category.${category}`)}
@@ -113,13 +130,18 @@ const Home = () => {
 				<Stack className={style.products}>
 					<Filter limit={limit} sort={sort} onLimitChange={handleLimitChange} onSortChange={handleSortChange} />
 					{!products.waiting ? (
-						<Grid container direction="row" justifyContent="center" alignItems={'center'} spacing={{xs: 2, md: 3}}>
-							{products.data.map(product => (
-								<Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-									<Product product={product} onProductAddClicked={handleProductAddClick} />
-								</Grid>
-							))}
-						</Grid>
+						<>
+							<Grid container direction="row" justifyContent="center" alignItems={'center'} spacing={{xs: 2, md: 3}}>
+								{selected.map(product => (
+									<Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+										<Product product={product} onProductAddClicked={handleProductAddClick} />
+									</Grid>
+								))}
+							</Grid>
+							<Stack alignItems={'center'} marginTop={5}>
+								<Pagination count={Math.ceil(products.data.length / 4)} shape="rounded" onChange={handlePageChange} />
+							</Stack>
+						</>
 					) : (
 						<LinearProgress />
 					)}

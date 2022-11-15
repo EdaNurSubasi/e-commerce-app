@@ -20,10 +20,10 @@ const useStyles = makeStyles(theme => ({
 	paper: {
 		display: 'flex',
 		padding: '2%',
+		height: '50%',
+		width: '50%',
 		justifyContent: 'center',
 		alignItems: 'center',
-		height: '70%',
-		width: '70%',
 	},
 }))
 
@@ -57,12 +57,12 @@ const Login = () => {
 	}
 
 	return (
-		<div className={style.container}>
+		<Stack className={style.container}>
 			<Paper className={style.paper} elevation={3}>
 				<LoginForm onLogin={handleLogin} waiting={session.waiting} />
 				<Toast open={open} message={translate.string('error.login')} severity="error" setOpen={setOpen} />
 			</Paper>
-		</div>
+		</Stack>
 	)
 }
 
