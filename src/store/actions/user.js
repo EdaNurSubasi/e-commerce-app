@@ -1,6 +1,7 @@
 import {createRequestActionCreators} from './utils'
 
 import {REQUEST, METHOD} from '../middlewares/request'
+import {createAction} from '@reduxjs/toolkit'
 
 export const creators = {
 	login: createRequestActionCreators('auth/login', token => {
@@ -8,6 +9,7 @@ export const creators = {
 			payload: token,
 		}
 	}),
+	logout: createAction('logout'),
 }
 
 export const actions = {
@@ -23,5 +25,8 @@ export const actions = {
 				authorized: false,
 			},
 		})
+	},
+	logout: () => dispatch => {
+		dispatch(creators.logout())
 	},
 }

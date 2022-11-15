@@ -12,11 +12,12 @@ export const user = createReducer(
 	},
 	builder => {
 		builder
+
+			//Login
 			.addCase(creators.login.begin, (state, action) => {
 				state.session.waiting = true
 			})
 			.addCase(creators.login.success, (state, action) => {
-				console.log(action.payload)
 				state.session = {
 					data: action.payload,
 					waiting: false,
@@ -24,11 +25,19 @@ export const user = createReducer(
 				}
 			})
 			.addCase(creators.login.fail, (state, action) => {
-				console.log(action.payload)
 				state.session = {
 					data: null,
 					waiting: false,
 					error: action.error,
+				}
+			})
+
+			//Logout
+			.addCase(creators.logout, (state, action) => {
+				state.session = {
+					data: Security.session.clear(),
+					waiting: false,
+					error: null,
 				}
 			})
 	}

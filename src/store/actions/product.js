@@ -7,6 +7,7 @@ export const creators = {
 	product: createRequestActionCreators('products/:id'),
 	categories: createRequestActionCreators('products/categories'),
 	category: createRequestActionCreators('products/category/:category'),
+	delete: createRequestActionCreators('products/delete/:id'),
 }
 
 export const actions = {
@@ -44,6 +45,18 @@ export const actions = {
 				types: [creators.categories.success(), creators.categories.fail()],
 				endpoint: `products/categories`,
 				method: METHOD.get,
+				authorized: false,
+			},
+		})
+	},
+	delete: id => dispatch => {
+		dispatch(creators.delete.begin())
+
+		dispatch({
+			[REQUEST]: {
+				types: [creators.delete.success(), creators.delete.fail()],
+				endpoint: `products/${id}`,
+				method: METHOD.delete,
 				authorized: false,
 			},
 		})

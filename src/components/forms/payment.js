@@ -1,17 +1,12 @@
-import {Alert, Button, Grid, Box, Stack, TextField, Typography} from '@mui/material'
+import {Alert, Button, Grid, Box, Stack, TextField, Typography, Divider} from '@mui/material'
 import React from 'react'
 import {useForm, Controller} from 'react-hook-form'
 import {AccountCircle} from '@mui/icons-material'
-import VpnKeyIcon from '@mui/icons-material/VpnKey'
 import CheckIcon from '@mui/icons-material/Check'
 import {makeStyles} from '@mui/styles'
 import {translate} from '../../localization'
 import PhoneIcon from '@mui/icons-material/Phone'
 import EmailIcon from '@mui/icons-material/Email'
-import LocationCityIcon from '@mui/icons-material/LocationCity'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
-import MarkunreadMailboxIcon from '@mui/icons-material/MarkunreadMailbox'
-import FlagIcon from '@mui/icons-material/Flag'
 import CreditCardIcon from '@mui/icons-material/CreditCard'
 import PinIcon from '@mui/icons-material/Pin'
 import EventNoteIcon from '@mui/icons-material/EventNote'
@@ -20,8 +15,6 @@ const useStyles = makeStyles(theme => ({
 	container: {
 		display: 'flex',
 		flexDirection: 'column',
-		height: '100%',
-		width: '100%',
 	},
 	title: {
 		padding: '2%',
@@ -143,14 +136,19 @@ const Payment = ({onPaymentSubmit}) => {
 												onChange={onChange}
 											/>
 										)}
-										rules={{required: true}}
+										rules={{required: true, pattern: /^[0-9]+$/i, maxLength: 11, minLength: 11}}
 										name={'phone'}
 										control={control}
 									/>
 								</Box>
+								{(errors.phone?.type === 'maxLength' || errors.phone?.type === 'minLength') && (
+									<Alert severity="error">{translate.string('error.phone')}</Alert>
+								)}
+								{errors.phone?.type === 'pattern' && <Alert severity="error">{translate.string('error.pattern')}</Alert>}
 								{errors.phone?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 						</Grid>
+						<Divider orientation="vertical" variant="middle" flexItem />
 						<Grid item className={style.addressInfo}>
 							<div className={style.firstName}>
 								<Box sx={{display: 'flex', alignItems: 'flex-end'}}>
@@ -161,15 +159,20 @@ const Payment = ({onPaymentSubmit}) => {
 												error={errors.cardNumber?.type === 'required'}
 												label={`${translate.string('checkout.payment.cardNumber')}`}
 												value={value}
-												{...register('cardNumber', {required: true})}
+												{...register('cardNumber')}
 												onChange={onChange}
 												variant="standard"
 											/>
 										)}
+										rules={{required: true, pattern: /^[0-9]+$/i, maxLength: 16, minLength: 16}}
 										name={'cardNumber'}
 										control={control}
 									/>
 								</Box>
+								{errors.cardNumber?.type === 'pattern' && <Alert severity="error">{translate.string('error.pattern')}</Alert>}
+								{(errors.cardNumber?.type === 'maxLength' || errors.phone?.type === 'minLength') && (
+									<Alert severity="error">{translate.string('error.cardNumber')}</Alert>
+								)}
 								{errors.cardNumber?.type === 'required' && <Alert severity="error">{translate.string('error.required')}</Alert>}
 							</div>
 							<div className={style.firstName}>

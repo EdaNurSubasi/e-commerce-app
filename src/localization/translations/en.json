@@ -1,5 +1,5 @@
 {
-	"title": "E-Commerce Application",
+	"title": "Shoppinoks",
 	"generic": {
 		"sort": "Sort",
 		"limit": "Limit",
@@ -13,20 +13,35 @@
 		"password": "Password",
 		"submit": "Login"
 	},
+	"logout": {
+		"submit": "Logout"
+	},
 	"product": {
 		"description": "Description",
 		"price": "Price",
 		"details": "Show Details",
 		"rate": "Rating",
 		"count": "Evaluations",
+		"quantity": "Quantity",
 		"addMessage": "Product Added to the Cart",
-		"removeMessage": "Product Removed from the Cart"
+		"removeMessage": "Product Removed from the Cart",
+		"deleted": "Product Deleted!",
+		"category": {
+			"all": "All",
+			"electronics": "Electronics",
+			"jewelery": "Jewelery",
+			"men's clothing": "Man's Clothing",
+			"women's clothing": "Woman's Clothing"
+		}
 	},
 	"shopCart": {
-		"addCart": "Add to Shopping List",
+		"addCart": "Add to Cart",
+		"delete": "Delete Product",
+		"update": "Update Product",
 		"pageTitle": "Products In Cart",
 		"total": "Total Price",
-		"proceed": "Proceed To Checkout"
+		"proceed": "Proceed To Checkout",
+		"go": "Go To Chart"
 	},
 	"checkout": {
 		"address": {
@@ -56,6 +71,10 @@
 		"dataNotFound": "There is Nothing to Show.",
 		"required": "This Field is Required!",
 		"login": "Username or Password is not Correct!",
-		"payment": "Check Your Credit Card Information! Payment is not Successful!"
+		"payment": "Check Your Credit Card Information! Payment is not Successful!",
+		"cardNumber": "Card Number Should be 16 digits",
+		"phone": "Phone Number Should be 11 digits",
+		"pattern": "Only Numerical Characters are Allowed!",
+		"failed": "Request Failed!"
 	}
 }

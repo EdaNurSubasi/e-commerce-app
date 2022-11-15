@@ -1,4 +1,4 @@
-import {Alert, Snackbar, Stack} from '@mui/material'
+import {Alert, Snackbar} from '@mui/material'
 import React from 'react'
 
 const Toast = ({message, severity, open, setOpen}) => {
@@ -10,13 +10,11 @@ const Toast = ({message, severity, open, setOpen}) => {
 		setOpen(false)
 	}
 	return (
-		<Stack spacing={2} sx={{width: '100%'}}>
-			<Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
-				<Alert onClose={handleClose} severity={severity} sx={{width: '100%'}}>
-					{message}
-				</Alert>
-			</Snackbar>
-		</Stack>
+		<Snackbar anchorOrigin={{vertical: 'top', horizontal: 'right'}} open={open} autoHideDuration={2000} onClose={handleClose}>
+			<Alert onClose={handleClose} severity={severity} sx={{width: '100%'}}>
+				{message}
+			</Alert>
+		</Snackbar>
 	)
 }
 

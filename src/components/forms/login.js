@@ -1,4 +1,4 @@
-import {Alert, Box, Button, CircularProgress, Grid, Stack, TextField, Typography} from '@mui/material'
+import {Alert, Box, Button, CircularProgress, Divider, Grid, IconButton, Stack, TextField, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 import React from 'react'
 import {translate} from '../../localization'
@@ -20,7 +20,6 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center',
 	},
 	form: {
-		padding: '2%',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
@@ -51,10 +50,11 @@ const LoginForm = ({onLogin, waiting}) => {
 	return (
 		<Stack className={style.container} spacing={2}>
 			<Stack className={style.title} spacing={2}>
-				<Typography variant="h4" component="div" fontWeight={'bolder'}>
+				<Typography variant="h4" fontWeight={'bolder'}>
 					{translate.string('login.title')}
 				</Typography>
 			</Stack>
+			<Divider />
 			<Grid container className={style.form}>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Grid item className={style.username}>
@@ -100,10 +100,15 @@ const LoginForm = ({onLogin, waiting}) => {
 					</Grid>
 					<Grid item className={style.buttons}>
 						{!waiting ? (
-							<Button fullWidth type="submit" color="success">
-								<CheckIcon />
-								<Typography fontWeight={'bold'}>{translate.string('login.submit')}</Typography>
-							</Button>
+							<Stack spacing={2}>
+								<Divider />
+								<IconButton fullWidth type="submit" color="success">
+									<CheckIcon />
+									<Typography fontWeight={'bold'} variant="h6">
+										{translate.string('login.submit')}
+									</Typography>
+								</IconButton>
+							</Stack>
 						) : (
 							<CircularProgress />
 						)}

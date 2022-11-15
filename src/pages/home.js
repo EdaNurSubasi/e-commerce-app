@@ -1,12 +1,41 @@
-import {Button, CircularProgress, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography} from '@mui/material'
+import {Button, Divider, Grid, LinearProgress, Pagination, Stack, Typography} from '@mui/material'
+import {makeStyles} from '@mui/styles'
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Filter, Product, Toast} from '../components'
 import {translate} from '../localization'
 import {ProductActions} from '../store/actions'
 
+const useStyles = makeStyles(theme => ({
+	container: {
+		overflow: 'hidden',
+		display: 'flex',
+		flexDirection: 'row',
+		width: '100%',
+		height: '100%',
+	},
+	categories: {
+		display: 'flex',
+		flex: 2,
+		padding: 5,
+		backgroundColor: 'lightblue',
+	},
+	products: {
+		flex: 10,
+		overflow: 'auto',
+		padding: 20,
+		width: '100%',
+		height: '100%',
+	},
+	category: {
+		alignContent: 'center',
+		justifyContent: 'center',
+	},
+}))
+
 const Home = () => {
 	const dispatch = useDispatch()
+	const style = useStyles()
 	const products = useSelector(state => state.product.products)
 	const categories = useSelector(state => state.product.categories)
 
@@ -14,6 +43,8 @@ const Home = () => {
 	const [sort, setSort] = useState('asc')
 	const [cat, setCat] = useState(null)
 	const [open, setOpen] = useState(false)
+	const [item, setItem] = useState(0)
+	const [selected, setSelected] = useState([])
 
 	const handleLimitChange = limit => {
 		setLimit(limit)
@@ -31,6 +62,20 @@ const Home = () => {
 		setOpen(true)
 	}
 
+	const handlePageChange = (data, page) => {
+		console.log(page)
+		setItem((page - 1) * 4)
+	}
+
+	useEffect(() => {
+		setSelected(products.data.slice(item, 4 + item))
+		setItem(0)
+	}, [products.data])
+
+	useEffect(() => {
+		setSelected(products.data.slice(item, 4 + item))
+	}, [item])
+
 	useEffect(() => {
 		dispatch(ProductActions.products(limit, sort, cat))
 	}, [limit, sort, cat])
@@ -40,45 +85,54 @@ const Home = () => {
 	}, [])
 
 	return (
-		<Stack display="flex" flexDirection="row">
-			<Stack padding={1} direction={'column'} alignItems="center" spacing={2} width="100%">
-				<Typography gutterBottom textAlign="center" marginTop={10} fontWeight={'bolder'} variant="h4" component="div">
-					{translate.string('generic.cat')}
-				</Typography>
-				{!categories.waiting ? (
-					<Stack justifyContent="center" marginTop={20} padding={1} spacing={2}>
-						{categories.data.map(category => (
-							<Button variant="text" key={category} onClick={() => handleCatChange(category)}>
-								{category}
-							</Button>
-						))}
-					</Stack>
-				) : (
-					<CircularProgress />
-				)}
-			</Stack>
-			<Stack padding={2}>
-				<Filter limit={limit} sort={sort} onLimitChange={handleLimitChange} onSortChange={handleSortChange} />
-				{!products.waiting ? (
-					<Grid
-						container
-						direction="row"
-						alignItems={'flex-start'}
-						justifyContent="center"
-						spacing={{xs: 2, md: 3}}
-						columns={{xs: 4, sm: 6, md: 12}}>
-						{products.data.map(product => (
-							<Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-								<Product product={product} onProductAddClicked={handleProductAddClick} />
-							</Grid>
-						))}
-					</Grid>
-				) : (
-					<CircularProgress />
-				)}
-			</Stack>
+		<>
 			<Toast open={open} message={translate.string('product.addMessage')} severity="success" setOpen={setOpen} />
-		</Stack>
+			<Stack className={style.container} direction="row">
+				<Stack className={style.categories}>
+					<Typography gutterBottom fontWeight={'bolder'} marginTop={6} marginBottom={6} textAlign="center" variant="h5">
+						{translate.string('generic.cat')}
+					</Typography>
+					{!categories.waiting ? (
+						<Stack className={style.category} spacing={2}>
+							<Divider />
+							<Button variant="text" onClick={() => handleCatChange(null)} color="primary">
+								{translate.string('product.category.all')}
+							</Button>
+							<Divider />
+							{categories.data.map((category, i) => (
+								<>
+									<Button variant="text" key={category} onClick={() => handleCatChange(category)} color="primary">
+										{translate.string(`product.category.${category}`)}
+									</Button>
+									<Divider />
+								</>
+							))}
+						</Stack>
+					) : (
+						<LinearProgress />
+					)}
+				</Stack>
+				<Stack className={style.products}>
+					<Filter limit={limit} sort={sort} onLimitChange={handleLimitChange} onSortChange={handleSortChange} />
+					{!products.waiting ? (
+						<>
+							<Grid container direction="row" justifyContent="center" alignItems={'center'} spacing={{xs: 2, md: 3}}>
+								{selected.map(product => (
+									<Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+										<Product product={product} onProductAddClicked={handleProductAddClick} />
+									</Grid>
+								))}
+							</Grid>
+							<Stack alignItems={'center'} marginTop={5}>
+								<Pagination count={Math.ceil(products.data.length / 4)} shape="rounded" onChange={handlePageChange} />
+							</Stack>
+						</>
+					) : (
+						<LinearProgress />
+					)}
+				</Stack>
+			</Stack>
+		</>
 	)
 }
 

@@ -76,19 +76,6 @@ export default store => next => async action => {
 		throw new Error('Specify a string endpoint URL.')
 	}
 
-	// let authorization = undefined
-	// if ( authorized ) {
-	//     const u = Security.client.get()
-
-	//     if ( u ) {
-	//         authorization = u.token
-	//     }
-
-	//     if (!authorization) {
-	//         throw new Error('Authorized flag specified but no authorization token found for request ' + endpoint)
-	//     }
-	// }
-
 	const actionWith = data => {
 		const fa = Object.assign({}, action, data)
 		delete fa[REQUEST]

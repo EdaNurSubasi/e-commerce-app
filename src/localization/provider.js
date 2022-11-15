@@ -6,6 +6,7 @@ import tr from './translations/tr'
 
 import 'moment/locale/tr'
 import {ConfigContext} from '../config'
+import {createContext} from 'react'
 
 I18n.fallbacks = true
 I18n.translations = {
@@ -13,7 +14,7 @@ I18n.translations = {
 	tr,
 }
 
-const Context = React.createContext(null)
+const Context = createContext(null)
 Context.displayName = 'LocalizationContext'
 
 const Provider = ({children}) => {

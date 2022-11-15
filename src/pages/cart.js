@@ -15,13 +15,10 @@ import {Toast} from '../components'
 const useStyles = makeStyles(theme => ({
 	container: {
 		display: 'flex',
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		padding: '1%',
 	},
 	title: {
-		padding: '1%',
+		padding: '2%',
+		alignItems: 'center',
 	},
 	dataError: {
 		display: 'flex',
@@ -123,7 +120,7 @@ const Cart = () => {
 	return (
 		<Stack className={style.container}>
 			<Stack className={style.title}>
-				<Typography component="div" variant="h5">
+				<Typography component="div" fontWeight={'bolder'} variant="h4">
 					{translate.string('shopCart.pageTitle').toUpperCase()}
 				</Typography>
 			</Stack>
@@ -133,7 +130,7 @@ const Cart = () => {
 						<Grid item key={p} className={style.cartItem}>
 							<Card className={style.itemContainer}>
 								<Stack className={style.image}>
-									<CardMedia sx={{maxWidth: '50%'}} component="img" image={cartStore.data[p].product.image} />
+									<CardMedia sx={{maxWidth: '75%'}} component="img" image={cartStore.data[p].product.image} />
 								</Stack>
 								<Stack className={style.desc}>
 									<Typography fontWeight={'bold'}>{cartStore.data[p].product.title}</Typography>
@@ -162,7 +159,7 @@ const Cart = () => {
 					))}
 					<Grid item className={style.checkout}>
 						<Typography className={style.price} fontWeight={'bold'} paddingBottom={'2%'}>
-							{translate.string('shopCart.total')}: ${totalPrice}
+							{translate.string('shopCart.total')}: ${totalPrice.toFixed(2)}
 						</Typography>
 						<Button className={style.remove} onClick={handleClick} fullWidth variant="contained" color="success">
 							<ShoppingCartCheckoutIcon />

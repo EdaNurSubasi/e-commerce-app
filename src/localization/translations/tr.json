@@ -1,5 +1,5 @@
 {
-	"title": "E-Ticaret Uygulama",
+	"title": "Shoppinoks",
 	"generic": {
 		"sort": "Sırala",
 		"limit": "Adet",
@@ -13,20 +13,35 @@
 		"password": "Parola",
 		"submit": "Giriş"
 	},
+	"logout": {
+		"submit": "Çıkış"
+	},
 	"product": {
 		"description": "Açıklama",
 		"price": "Fiyat",
 		"details": "Ayrıntıları Göster",
 		"rate": "Puan",
 		"count": "Değerlendirme Sayısı",
+		"quantity": "Adet",
 		"addMessage": "Ürün Sepete Eklendi.",
-		"removeMessage": "Ürün Sepetten Çıkartıldı."
+		"removeMessage": "Ürün Sepetten Çıkartıldı.",
+		"deleted": "Ürün Silindi!",
+		"category": {
+			"all": "Hepsi",
+			"electronics": "Elektronik",
+			"jewelery": "Takı / Mücevher",
+			"men's clothing": "Erkek Giyim",
+			"women's clothing": "Kadın Giyim"
+		}
 	},
 	"shopCart": {
-		"addCart": "Alışveriş Listesine Ekle",
+		"addCart": "Sepetine Ekle",
+		"delete": "Ürünü Sil",
+		"update": "Ürünü Güncelle",
 		"pageTitle": "Sepetteki Ürünler",
 		"total": "Toplam Tutar",
-		"proceed": "Ödemeye İlerle."
+		"proceed": "Ödemeye İlerle.",
+		"go": "Sepete Git"
 	},
 	"checkout": {
 		"address": {
@@ -38,7 +53,8 @@
 			"country": "Ülke",
 			"city": "Şehir",
 			"address": "Adres",
-			"zip": "Zip Kodu"
+			"zip": "Zip Kodu",
+			"submit": "Kaydet"
 		},
 		"payment": {
 			"title": "Ödeme Bilgileri",
@@ -55,6 +71,10 @@
 		"dataNotFound": "Gösterilecek Herhangi Bir Şey Bulunamamıştır.",
 		"required": "Bu Alan Gereklidir!",
 		"login": "Kullanıcı Adı veya Şifre Hatalı!",
-		"payment": "Kredi Kartı Bilgilerini Kontrol Ediniz! Ödeme İşlemi Tamamlanamadı!"
+		"payment": "Kredi Kartı Bilgilerini Kontrol Ediniz! Ödeme İşlemi Tamamlanamadı!",
+		"cardNumber": "Kredi Kartı Numarası 16 Haneli Olmalıdır!",
+		"phone": "Telefon Numarası 11 Haneli Olmalıdır!",
+		"pattern": "Sadece Numerik Karakterler Olmalıdır!",
+		"failed": "İstek Başarısız!"
 	}
 }
