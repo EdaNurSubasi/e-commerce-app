@@ -1,4 +1,4 @@
-import {Button, Card, CardActions, CardMedia, Divider, Grid, IconButton, Stack, Typography} from '@mui/material'
+import {Button, Card, CardActions, CardMedia, Grid, IconButton, Stack, Typography} from '@mui/material'
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {translate} from '../localization'
@@ -159,7 +159,7 @@ const Cart = () => {
 					))}
 					<Grid item className={style.checkout}>
 						<Typography className={style.price} fontWeight={'bold'} paddingBottom={'2%'}>
-							{translate.string('shopCart.total')}: ${totalPrice}
+							{translate.string('shopCart.total')}: ${totalPrice.toFixed(2)}
 						</Typography>
 						<Button className={style.remove} onClick={handleClick} fullWidth variant="contained" color="success">
 							<ShoppingCartCheckoutIcon />

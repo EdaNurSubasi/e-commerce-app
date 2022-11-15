@@ -1,4 +1,4 @@
-import {Alert, Button, Card, CardActions, CardContent, CardMedia, Snackbar, Typography} from '@mui/material'
+import {Button, Card, CardActions, CardContent, CardMedia, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 import React from 'react'
 import {translate} from '../localization'

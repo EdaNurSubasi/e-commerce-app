@@ -1,25 +1,10 @@
-import {
-	Button,
-	CircularProgress,
-	Divider,
-	FormControl,
-	Grid,
-	InputLabel,
-	LinearProgress,
-	MenuItem,
-	Pagination,
-	Paper,
-	Select,
-	Stack,
-	Typography,
-} from '@mui/material'
+import {Button, Divider, Grid, LinearProgress, Pagination, Stack, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Filter, Product, Toast} from '../components'
 import {translate} from '../localization'
 import {ProductActions} from '../store/actions'
-import {height} from '@mui/system'
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -33,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flex: 2,
 		padding: 5,
-		backgroundColor: 'lightgray',
+		backgroundColor: 'lightblue',
 	},
 	products: {
 		flex: 10,
@@ -110,13 +95,13 @@ const Home = () => {
 					{!categories.waiting ? (
 						<Stack className={style.category} spacing={2}>
 							<Divider />
-							<Button variant="text" onClick={() => handleCatChange(null)} color="warning">
+							<Button variant="text" onClick={() => handleCatChange(null)} color="primary">
 								{translate.string('product.category.all')}
 							</Button>
 							<Divider />
 							{categories.data.map((category, i) => (
 								<>
-									<Button variant="text" key={category} onClick={() => handleCatChange(category)} color="warning">
+									<Button variant="text" key={category} onClick={() => handleCatChange(category)} color="primary">
 										{translate.string(`product.category.${category}`)}
 									</Button>
 									<Divider />

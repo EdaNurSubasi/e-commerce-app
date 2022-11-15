@@ -13,6 +13,9 @@
 		"password": "Parola",
 		"submit": "Giriş"
 	},
+	"logout": {
+		"submit": "Çıkış"
+	},
 	"product": {
 		"description": "Açıklama",
 		"price": "Fiyat",
@@ -22,6 +25,7 @@
 		"quantity": "Adet",
 		"addMessage": "Ürün Sepete Eklendi.",
 		"removeMessage": "Ürün Sepetten Çıkartıldı.",
+		"deleted": "Ürün Silindi!",
 		"category": {
 			"all": "Hepsi",
 			"electronics": "Elektronik",
@@ -49,7 +53,8 @@
 			"country": "Ülke",
 			"city": "Şehir",
 			"address": "Adres",
-			"zip": "Zip Kodu"
+			"zip": "Zip Kodu",
+			"submit": "Kaydet"
 		},
 		"payment": {
 			"title": "Ödeme Bilgileri",
@@ -66,6 +71,10 @@
 		"dataNotFound": "Gösterilecek Herhangi Bir Şey Bulunamamıştır.",
 		"required": "Bu Alan Gereklidir!",
 		"login": "Kullanıcı Adı veya Şifre Hatalı!",
-		"payment": "Kredi Kartı Bilgilerini Kontrol Ediniz! Ödeme İşlemi Tamamlanamadı!"
+		"payment": "Kredi Kartı Bilgilerini Kontrol Ediniz! Ödeme İşlemi Tamamlanamadı!",
+		"cardNumber": "Kredi Kartı Numarası 16 Haneli Olmalıdır!",
+		"phone": "Telefon Numarası 11 Haneli Olmalıdır!",
+		"pattern": "Sadece Numerik Karakterler Olmalıdır!",
+		"failed": "İstek Başarısız!"
 	}
 }

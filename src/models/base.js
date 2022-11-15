@@ -1,36 +1,35 @@
 export class Model {
-    encode() {
-        return Object.keys(this).reduce( (a, k) => {
-            if (this[k] instanceof Model) {
-                a[k] = this[k].encode()
-            } else {
-                a[k] = this[k]
-            }
+	encode() {
+		return Object.keys(this).reduce((a, k) => {
+			if (this[k] instanceof Model) {
+				a[k] = this[k].encode()
+			} else {
+				a[k] = this[k]
+			}
 
-            return a
-        }, {})
-    }
+			return a
+		}, {})
+	}
 
-    decode(json) {
-    }
+	decode(json) {}
 
-    validate() {
-        return true
-    }
+	validate() {
+		return true
+	}
 }
 
-export class Entity extends Model{
-    constructor(id = null) {
-        super()
-        this.id = id
-    }
+export class Entity extends Model {
+	constructor(id = null) {
+		super()
+		this.id = id
+	}
 
-    decode(json) {
-        super.decode(json)
-        this.id = json.id
-    }
+	decode(json) {
+		super.decode(json)
+		this.id = json.id
+	}
 
-    validate() {
-        return !!this.id
-    }
+	validate() {
+		return !!this.id
+	}
 }

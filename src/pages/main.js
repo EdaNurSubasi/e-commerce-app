@@ -1,30 +1,20 @@
 import {AccountCircle} from '@mui/icons-material'
-import {AppBar, Badge, Box, CssBaseline, Divider, IconButton, Menu, MenuItem, Paper, Popover, Toolbar, Typography} from '@mui/material'
+import {AppBar, Badge, CssBaseline, Divider, IconButton, Menu, MenuItem, Toolbar, Typography} from '@mui/material'
 import {Stack} from '@mui/system'
 import {makeStyles} from '@mui/styles'
 import React, {useEffect, useState} from 'react'
 import {Outlet, useNavigate} from 'react-router-dom'
 import {translate} from '../localization'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import LogoutIcon from '@mui/icons-material/Logout'
 import {useDispatch, useSelector} from 'react-redux'
-import {CartActions} from '../store/actions'
+import {CartActions, UserActions} from '../store/actions'
 import {CartItem} from '../components'
 
 const useStyles = makeStyles(theme => ({
 	container: {
-		// display: 'flex',
 		position: 'absolute',
 		overflow: 'hidden',
-		// flexDirection: 'column',
-		// overflow: 'hidden',
-		width: '100%',
-		height: '100%',
-	},
-	contents: {
-		// marginTop: 68,
-		// marginBottom: 45,
-		// marginRight: 10,
-		// marginLeft: 10,
 		width: '100%',
 		height: '100%',
 	},
@@ -66,20 +56,12 @@ const useStyles = makeStyles(theme => ({
 	},
 	content: {
 		position: 'absolute',
-		// display: 'flex',
 		overflowY: 'auto',
 		overflowX: 'hidden',
-		// width: '100%',
-		// height: '100%',
 		bottom: 40,
 		top: 60,
 		left: 0,
 		right: 0,
-		marginTop: 10,
-		marginBottom: 10,
-		marginRight: 10,
-		marginLeft: 10,
-		// padding: 20,
 	},
 	footer: {
 		position: 'absolute',
@@ -88,7 +70,6 @@ const useStyles = makeStyles(theme => ({
 		bottom: 0,
 		right: 0,
 		height: 40,
-		backgroundColor: 'purple',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
@@ -96,6 +77,7 @@ const useStyles = makeStyles(theme => ({
 
 const Main = () => {
 	const [anchorEl, setAnchorEl] = useState(null)
+	const [anchorElUser, setAnchorElUser] = useState(null)
 	const [totalPrice, setTotalPrice] = useState(0.0)
 
 	const style = useStyles()
@@ -109,6 +91,13 @@ const Main = () => {
 	const handleExpendClick = event => {
 		if (Object.keys(cartStore.data).length) {
 			setAnchorEl(event.currentTarget)
+		}
+	}
+
+	const openUser = Boolean(anchorElUser)
+	const handleUserExpendClick = event => {
+		if (session.data) {
+			setAnchorElUser(event.currentTarget)
 		}
 	}
 
@@ -127,6 +116,11 @@ const Main = () => {
 	const handleClose = () => {
 		setAnchorEl(null)
 	}
+
+	const handleUserClose = () => {
+		setAnchorElUser(null)
+	}
+
 	const handleRouteClick = event => {
 		navigate(`/cart`)
 	}
@@ -137,6 +131,10 @@ const Main = () => {
 
 	const handleRemoveCart = product => {
 		dispatch(CartActions.store(product, -1))
+	}
+
+	const handleLogoutClick = () => {
+		dispatch(UserActions.logout())
 	}
 
 	const calculateTotalPrice = () => {
@@ -150,7 +148,6 @@ const Main = () => {
 
 	return (
 		<Stack className={style.container}>
-			{/* <Paper className={style.contents} variant="outlined"> */}
 			<CssBaseline />
 			<AppBar className={style.header}>
 				<Toolbar>
@@ -162,7 +159,7 @@ const Main = () => {
 							<ShoppingCartIcon />
 						</Badge>
 					</IconButton>
-					<IconButton size="large" edge="start" color="inherit" sx={{mr: 2}}>
+					<IconButton onClick={handleUserExpendClick} size="large" edge="start" color="inherit" sx={{mr: 2}}>
 						{session.data ? (
 							<Badge variant="dot" color="secondary">
 								<AccountCircle />
@@ -181,7 +178,6 @@ const Main = () => {
 					{translate.string('title').toUpperCase()}
 				</Typography>
 			</AppBar>
-			{/* </Paper> */}
 
 			<Menu className={style.card} anchorEl={anchorEl} open={open} onClose={handleClose}>
 				<Stack className={style.cardAll}>
@@ -218,6 +214,14 @@ const Main = () => {
 							{translate.string('shopCart.total')}: ${totalPrice.toFixed(2)}
 						</Typography>
 					</Stack>
+				</Stack>
+			</Menu>
+			<Menu className={style.card} anchorEl={anchorElUser} open={openUser} onClose={handleUserClose}>
+				<Stack className={style.cardAll}>
+					<IconButton onClick={handleLogoutClick} size="large" edge="start" color="inherit" sx={{mr: 2}}>
+						<LogoutIcon color="warning" />
+						<Typography fontWeight={'bold'}>{translate.string('logout.submit')}</Typography>
+					</IconButton>
 				</Stack>
 			</Menu>
 		</Stack>

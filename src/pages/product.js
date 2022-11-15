@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {CartActions, ProductActions} from '../store/actions'
-import {Button, CardMedia, CircularProgress, Divider, Paper, Rating, Stack, Typography} from '@mui/material'
+import {Button, CardMedia, CircularProgress, Divider, Rating, Stack, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 import {translate} from '../localization'
 

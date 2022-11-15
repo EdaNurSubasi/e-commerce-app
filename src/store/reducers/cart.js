@@ -5,7 +5,7 @@ import {creators} from '../actions/cart'
 export const cart = createReducer(
 	{
 		store: {
-			data: Security.cart.get() ? Security.cart.get() : {}, // {id: {quantity:product}
+			data: Security.cart.get() ? Security.cart.get() : {}, // {id: {quantity,product}
 			waiting: false,
 			error: null,
 		},

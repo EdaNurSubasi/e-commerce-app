@@ -1,12 +1,11 @@
 import {AddressForm, CartItem, PaymentForm, Toast} from '../components'
-import {Card, Divider, Paper, Stack, Typography} from '@mui/material'
+import {Divider, Paper, Stack, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {CartActions} from '../store/actions'
 import {useState} from 'react'
 import {translate} from '../localization'
-import Cart from './cart'
 import {useEffect} from 'react'
 
 const useStyles = makeStyles(theme => ({
@@ -59,7 +58,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 let info = Object.freeze({
-	cardNumber: '1111 1111 1111 1111',
+	cardNumber: '1111111111111111',
 	expirationDate: '11/11',
 	cvc: '111',
 	name: 'Jane Doe',

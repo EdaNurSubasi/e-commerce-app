@@ -2,7 +2,6 @@ import {Alert, Button, Grid, Box, Stack, TextField, Typography, Divider} from '@
 import React from 'react'
 import {useForm, Controller} from 'react-hook-form'
 import {AccountCircle} from '@mui/icons-material'
-import VpnKeyIcon from '@mui/icons-material/VpnKey'
 import CheckIcon from '@mui/icons-material/Check'
 import {makeStyles} from '@mui/styles'
 import {translate} from '../../localization'
@@ -12,7 +11,6 @@ import LocationCityIcon from '@mui/icons-material/LocationCity'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import MarkunreadMailboxIcon from '@mui/icons-material/MarkunreadMailbox'
 import FlagIcon from '@mui/icons-material/Flag'
-import InputMask from 'react-input-mask'
 
 const useStyles = makeStyles(theme => ({
 	container: {

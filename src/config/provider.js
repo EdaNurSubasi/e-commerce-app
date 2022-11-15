@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
+import {createContext} from 'react'
 
-const Context = React.createContext(null)
+const Context = createContext(null)
 Context.displayName = 'ConfigContext'
 
 const config = {
@@ -44,7 +45,7 @@ const Provider = ({children}) => {
 		if (browserLanguage) {
 			setConfigState(prevState => ({
 				...prevState,
-				language: browserLanguage.split(/[-_]/)[0], // language without region code
+				language: browserLanguage.split(/[-_]/)[0],
 			}))
 		}
 	}, [])

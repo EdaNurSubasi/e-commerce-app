@@ -13,6 +13,9 @@
 		"password": "Password",
 		"submit": "Login"
 	},
+	"logout": {
+		"submit": "Logout"
+	},
 	"product": {
 		"description": "Description",
 		"price": "Price",

@@ -1,6 +1,6 @@
 import {FormControl, InputLabel, MenuItem, Select} from '@mui/material'
 import {Stack} from '@mui/system'
-import React, {useState} from 'react'
+import React from 'react'
 import {translate} from '../localization'
 
 const Filter = ({limit, sort, onSortChange, onLimitChange}) => {
