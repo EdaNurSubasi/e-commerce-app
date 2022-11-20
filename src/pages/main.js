@@ -127,6 +127,10 @@ const Main = () => {
 		navigate(`/cart`)
 	}
 
+	const handleTitleClick = () => {
+		navigate(`/`)
+	}
+
 	const handleAddCart = product => {
 		dispatch(CartActions.store(product, 1))
 	}
@@ -153,7 +157,7 @@ const Main = () => {
 			<CssBaseline />
 			<AppBar className={style.header}>
 				<Toolbar>
-					<Typography variant="h6" component="div" sx={{flexGrow: 1, paddingLeft: 2}}>
+					<Typography onClick={handleTitleClick} variant="h6" component="div" sx={{flexGrow: 1, paddingLeft: 2, cursor: 'pointer'}}>
 						{translate.string('title').toUpperCase()}
 					</Typography>
 					<IconButton onClick={handleExpendClick} size="large" edge="start" color="inherit" sx={{mr: 2}}>
