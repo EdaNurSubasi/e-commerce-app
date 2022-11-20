@@ -1,6 +1,6 @@
 import {FormControl, InputLabel, MenuItem, Select} from '@mui/material'
 import {Stack} from '@mui/system'
-import React from 'react'
+
 import {translate} from '../localization'
 
 const Filter = ({limit, sort, onSortChange, onLimitChange}) => {
@@ -10,6 +10,7 @@ const Filter = ({limit, sort, onSortChange, onLimitChange}) => {
 	const handleLimitChange = event => {
 		onLimitChange(event.target.value)
 	}
+
 	return (
 		<Stack padding={2} direction={'row'} spacing={2}>
 			<FormControl fullWidth>

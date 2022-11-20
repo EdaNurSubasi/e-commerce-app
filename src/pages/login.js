@@ -1,12 +1,13 @@
 import {Paper, Stack} from '@mui/material'
 import {makeStyles} from '@mui/styles'
-import React, {useEffect} from 'react'
+
+import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import {Navigate, useNavigate} from 'react-router-dom'
+
 import {LoginForm, Toast} from '../components'
 import {UserActions} from '../store/actions'
-import {Navigate, useNavigate} from 'react-router-dom'
 import {translate} from '../localization'
-import {useState} from 'react'
 
 const useStyles = makeStyles(theme => ({
 	container: {

@@ -1,9 +1,10 @@
 import {Button, Card, CardActions, CardContent, CardMedia, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
-import React from 'react'
-import {translate} from '../localization'
+
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
+
+import {translate} from '../localization'
 import {CartActions} from '../store/actions'
 
 const useStyles = makeStyles(theme => ({

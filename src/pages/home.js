@@ -1,7 +1,9 @@
 import {Button, Divider, Grid, LinearProgress, Pagination, Stack, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
-import React, {useEffect, useState} from 'react'
+
+import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+
 import {Filter, Product, Toast} from '../components'
 import {translate} from '../localization'
 import {ProductActions} from '../store/actions'
@@ -99,7 +101,7 @@ const Home = () => {
 								{translate.string('product.category.all')}
 							</Button>
 							<Divider />
-							{categories.data.map((category, i) => (
+							{categories.data.map(category => (
 								<>
 									<Button variant="text" key={category} onClick={() => handleCatChange(category)} color="primary">
 										{translate.string(`product.category.${category}`)}

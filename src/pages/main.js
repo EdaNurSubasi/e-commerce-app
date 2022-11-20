@@ -2,12 +2,14 @@ import {AccountCircle} from '@mui/icons-material'
 import {AppBar, Badge, CssBaseline, Divider, IconButton, Menu, MenuItem, Toolbar, Typography} from '@mui/material'
 import {Stack} from '@mui/system'
 import {makeStyles} from '@mui/styles'
-import React, {useEffect, useState} from 'react'
-import {Outlet, useNavigate} from 'react-router-dom'
-import {translate} from '../localization'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import LogoutIcon from '@mui/icons-material/Logout'
+
+import React, {useEffect, useState} from 'react'
+import {Outlet, useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
+
+import {translate} from '../localization'
 import {CartActions, UserActions} from '../store/actions'
 import {CartItem} from '../components'
 

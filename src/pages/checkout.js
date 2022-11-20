@@ -1,12 +1,13 @@
-import {AddressForm, CartItem, PaymentForm, Toast} from '../components'
 import {Divider, Paper, Stack, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
+
+import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
+
+import {AddressForm, CartItem, PaymentForm, Toast} from '../components'
 import {CartActions} from '../store/actions'
-import {useState} from 'react'
 import {translate} from '../localization'
-import {useEffect} from 'react'
 
 const useStyles = makeStyles(theme => ({
 	container: {

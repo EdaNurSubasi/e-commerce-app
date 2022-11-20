@@ -1,8 +1,8 @@
 import {Card, CardActions, CardContent, CardMedia, IconButton, Stack, Typography} from '@mui/material'
-import React from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 import {makeStyles} from '@mui/styles'
+
 import {translate} from '../localization'
 
 const useStyles = makeStyles(theme => ({

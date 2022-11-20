@@ -1,12 +1,11 @@
 import I18n from 'i18n-js'
-import React, {useContext} from 'react'
+import 'moment/locale/tr'
+
+import {useContext, createContext} from 'react'
 
 import en from './translations/en'
 import tr from './translations/tr'
-
-import 'moment/locale/tr'
 import {ConfigContext} from '../config'
-import {createContext} from 'react'
 
 I18n.fallbacks = true
 I18n.translations = {

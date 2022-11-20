@@ -1,11 +1,12 @@
-import {Alert, Box, Button, CircularProgress, Divider, Grid, IconButton, Stack, TextField, Typography} from '@mui/material'
+import {Alert, Box, CircularProgress, Divider, Grid, IconButton, Stack, TextField, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
-import React from 'react'
-import {translate} from '../../localization'
 import {AccountCircle} from '@mui/icons-material'
 import VpnKeyIcon from '@mui/icons-material/VpnKey'
-import {useForm, Controller} from 'react-hook-form'
 import CheckIcon from '@mui/icons-material/Check'
+
+import {useForm, Controller} from 'react-hook-form'
+
+import {translate} from '../../localization'
 
 const useStyles = makeStyles(theme => ({
 	container: {

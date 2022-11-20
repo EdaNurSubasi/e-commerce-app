@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from 'react'
-import {createContext} from 'react'
+import {useState, useEffect, createContext} from 'react'
 
 const Context = createContext(null)
 Context.displayName = 'ConfigContext'
 
 const config = {
 	language: 'tr',
-	direction: 'ltr',
-	theme: {
-		mode: 'light',
-	},
+	// direction: 'ltr',
+	// theme: {
+	// 	mode: 'light',
+	// },
 }
 
 const language = () => {
@@ -26,19 +25,19 @@ const Provider = ({children}) => {
 		}))
 	}
 
-	const setTextDirection = direction => {
-		setConfigState(prevState => ({
-			...prevState,
-			direction,
-		}))
-	}
+	// const setTextDirection = direction => {
+	// 	setConfigState(prevState => ({
+	// 		...prevState,
+	// 		direction,
+	// 	}))
+	// }
 
-	const setThemeMode = mode => {
-		setConfigState(prevState => ({
-			...prevState,
-			theme: {...prevState.theme, mode},
-		}))
-	}
+	// const setThemeMode = mode => {
+	// 	setConfigState(prevState => ({
+	// 		...prevState,
+	// 		theme: {...prevState.theme, mode},
+	// 	}))
+	// }
 
 	useEffect(() => {
 		const browserLanguage = language()
@@ -50,7 +49,8 @@ const Provider = ({children}) => {
 		}
 	}, [])
 
-	return <Context.Provider value={{...configState, setLanguage, setTextDirection, setThemeMode}}>{children}</Context.Provider>
+	// return <Context.Provider value={{...configState, setLanguage, setTextDirection, setThemeMode}}>{children}</Context.Provider>
+	return <Context.Provider value={{...configState, setLanguage}}>{children}</Context.Provider>
 }
 
 export {Context, Provider}

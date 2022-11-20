@@ -1,15 +1,16 @@
 import {Alert, Button, Grid, Box, Stack, TextField, Typography, Divider} from '@mui/material'
-import React from 'react'
-import {useForm, Controller} from 'react-hook-form'
 import {AccountCircle} from '@mui/icons-material'
 import CheckIcon from '@mui/icons-material/Check'
 import {makeStyles} from '@mui/styles'
-import {translate} from '../../localization'
 import PhoneIcon from '@mui/icons-material/Phone'
 import EmailIcon from '@mui/icons-material/Email'
 import CreditCardIcon from '@mui/icons-material/CreditCard'
 import PinIcon from '@mui/icons-material/Pin'
 import EventNoteIcon from '@mui/icons-material/EventNote'
+
+import {useForm, Controller} from 'react-hook-form'
+
+import {translate} from '../../localization'
 
 const useStyles = makeStyles(theme => ({
 	container: {

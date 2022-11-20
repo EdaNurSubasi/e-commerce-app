@@ -1,15 +1,16 @@
 import {Button, Card, CardActions, CardMedia, Grid, IconButton, Stack, Typography} from '@mui/material'
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {translate} from '../localization'
-import {CartActions} from '../store/actions'
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
+import RemoveIcon from '@mui/icons-material/Remove'
+import AddIcon from '@mui/icons-material/Add'
 import {makeStyles} from '@mui/styles'
 
-import AddIcon from '@mui/icons-material/Add'
-import RemoveIcon from '@mui/icons-material/Remove'
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout'
+import {useDispatch, useSelector} from 'react-redux'
+import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+
+import {CartActions} from '../store/actions'
+import {translate} from '../localization'
 import {Toast} from '../components'
 
 const useStyles = makeStyles(theme => ({

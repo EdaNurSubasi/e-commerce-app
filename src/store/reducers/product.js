@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit'
-import {Product} from '../../models'
 
+import {Product} from '../../models'
 import {creators} from '../actions/product'
 
 export const product = createReducer(

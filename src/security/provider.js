@@ -1,4 +1,4 @@
-import React, {createContext} from 'react'
+import {createContext} from 'react'
 import {useSelector} from 'react-redux'
 
 import Security from '../utils/security'

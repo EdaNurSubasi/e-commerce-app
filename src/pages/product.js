@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react'
-import {useNavigate, useParams} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
-import {CartActions, ProductActions} from '../store/actions'
 import {Button, CardMedia, CircularProgress, Divider, Rating, Stack, Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
-import {translate} from '../localization'
-
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import BorderColorIcon from '@mui/icons-material/BorderColor'
+
+import {useEffect, useState} from 'react'
+import {useNavigate, useParams} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+
 import {Toast} from '../components'
-import {useState} from 'react'
+import {translate} from '../localization'
+import {CartActions, ProductActions} from '../store/actions'
 
 const useStyles = makeStyles(theme => ({
 	container: {

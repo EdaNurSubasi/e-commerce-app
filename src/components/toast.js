@@ -1,5 +1,4 @@
 import {Alert, Snackbar} from '@mui/material'
-import React from 'react'
 
 const Toast = ({message, severity, open, setOpen}) => {
 	const handleClose = (event, reason) => {
