@@ -6,9 +6,9 @@ Context.displayName = 'ConfigContext'
 const config = {
 	language: 'tr',
 	// direction: 'ltr',
-	// theme: {
-	// 	mode: 'light',
-	// },
+	theme: {
+		mode: 'light',
+	},
 }
 
 const language = () => {
@@ -32,12 +32,12 @@ const Provider = ({children}) => {
 	// 	}))
 	// }
 
-	// const setThemeMode = mode => {
-	// 	setConfigState(prevState => ({
-	// 		...prevState,
-	// 		theme: {...prevState.theme, mode},
-	// 	}))
-	// }
+	const setThemeMode = mode => {
+		setConfigState(prevState => ({
+			...prevState,
+			theme: {...prevState.theme, mode},
+		}))
+	}
 
 	useEffect(() => {
 		const browserLanguage = language()
